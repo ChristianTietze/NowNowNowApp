@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		503B98EC267D30A4006F752F /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98EB267D30A4006F752F /* Tests_iOS.swift */; };
-		503B98F7267D30A4006F752F /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98F6267D30A4006F752F /* Tests_macOS.swift */; };
 		503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
 		503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
 		503B98FB267D30A4006F752F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D1267D30A2006F752F /* ContentView.swift */; };
@@ -44,10 +42,8 @@
 		503B98E1267D30A4006F752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503B98E2267D30A4006F752F /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		503B98E7267D30A4006F752F /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		503B98EB267D30A4006F752F /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
 		503B98ED267D30A4006F752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503B98F2267D30A4006F752F /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		503B98F6267D30A4006F752F /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		503B98F8267D30A4006F752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -136,7 +132,6 @@
 		503B98EA267D30A4006F752F /* Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
-				503B98EB267D30A4006F752F /* Tests_iOS.swift */,
 				503B98ED267D30A4006F752F /* Info.plist */,
 			);
 			path = "Tests iOS";
@@ -145,7 +140,6 @@
 		503B98F5267D30A4006F752F /* Tests macOS */ = {
 			isa = PBXGroup;
 			children = (
-				503B98F6267D30A4006F752F /* Tests_macOS.swift */,
 				503B98F8267D30A4006F752F /* Info.plist */,
 			);
 			path = "Tests macOS";
@@ -326,7 +320,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503B98EC267D30A4006F752F /* Tests_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				503B98F7267D30A4006F752F /* Tests_macOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

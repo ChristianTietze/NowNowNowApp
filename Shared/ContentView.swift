@@ -1,10 +1,5 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Christian Tietze on 18.06.21.
-//
-
+//  Copyright © 2021 Christian Tietze. All rights reserved. Distributed under the MIT License.
+ 
 import SwiftUI
 
 struct ContentView: View {
