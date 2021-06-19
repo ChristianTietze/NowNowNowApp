@@ -6,7 +6,7 @@ import SwiftUI
 struct NowNowNowApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NowExcerptListView()
         }
     }
 }
