@@ -11,8 +11,13 @@ struct NowExcerptListView: View {
     var body: some View {
         List(excerpts, id: \.title) { item in
             VStack(alignment: .leading) {
-                Text(item.title).fontWeight(.bold)
-                Text(item.updatedAt)
+                HStack.init(alignment: .firstTextBaseline) {
+                    Text(item.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Text(item.updatedAt)
+                        .foregroundColor(.secondary)
+                }
                 Text(item.excerpt)
             }
         }
