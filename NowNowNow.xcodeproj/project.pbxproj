@@ -15,6 +15,8 @@
 		503B98FE267D30A4006F752F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 503B98D2267D30A4006F752F /* Assets.xcassets */; };
 		503B990E267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */; };
 		503B990F267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */; };
+		503B9911267F66D8006F752F /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B9910267F66D8006F752F /* CircleImage.swift */; };
+		503B9912267F66D8006F752F /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B9910267F66D8006F752F /* CircleImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 		503B98F2267D30A4006F752F /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		503B98F8267D30A4006F752F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptViewModel.swift; sourceTree = "<group>"; };
+		503B9910267F66D8006F752F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,7 @@
 				503B98D0267D30A2006F752F /* NowNowNowApp.swift */,
 				503B98D1267D30A2006F752F /* NowExcerptListView.swift */,
 				503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */,
+				503B9910267F66D8006F752F /* CircleImage.swift */,
 				503B98D2267D30A4006F752F /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -307,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
+				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				503B990E267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 			);
@@ -317,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503B98FC267D30A4006F752F /* NowExcerptListView.swift in Sources */,
+				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				503B990F267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 			);
