@@ -8,17 +8,30 @@ struct NowExcerptListView: View {
         NowExcerptViewModel(title: "Test 2", updatedAt: "2021-06-19", excerpt: "this is another but longer list item"),
     ]
 
+    private var placeholderImage: Image {
+        Image("NowClock")
+    }
+
     var body: some View {
         List(excerpts, id: \.title) { item in
             VStack(alignment: .leading) {
-                HStack.init(alignment: .firstTextBaseline) {
-                    Text(item.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                    Text(item.updatedAt)
-                        .foregroundColor(.secondary)
+                HStack(alignment: .top, spacing: 10) {
+                    placeholderImage
+                        .resizable()
+                        .frame(width: 32, height: 32, alignment: .center)
+                        .fixedSize(horizontal: true, vertical: true)
+                        .aspectRatio(contentMode: .fill)
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .firstTextBaseline) {
+                            Text(item.title)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Text(item.updatedAt)
+                                .foregroundColor(.secondary)
+                        }
+                        Text(item.excerpt)
+                    }
                 }
-                Text(item.excerpt)
             }
         }
     }
