@@ -9,7 +9,8 @@ struct AddSubscriptionButton: View {
         Button(action: {
             self.showSheetView.toggle()
         }, label: {
-            Image(systemName: "plus")
+            Label("Add", systemImage: "plus")
+                .labelStyle(.iconOnly)
         }).sheet(isPresented: $showSheetView) {
             SubscribeView(showSheetView: $showSheetView)
         }
