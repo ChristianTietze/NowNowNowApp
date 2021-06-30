@@ -21,6 +21,8 @@
 		509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
 		509DF6AB268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
+		509DF6AD268C55F700090624 /* NowExcerptPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */; };
+		509DF6AE268C55F700090624 /* NowExcerptPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		503B9910267F66D8006F752F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+nowPlaceholderIcon.swift"; sourceTree = "<group>"; };
 		509DF6A9268C53D700090624 /* NowExcerptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptView.swift; sourceTree = "<group>"; };
+		509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,7 @@
 				503B98D1267D30A2006F752F /* NowExcerptListView.swift */,
 				509DF6A9268C53D700090624 /* NowExcerptView.swift */,
 				503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */,
+				509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */,
 				503B9910267F66D8006F752F /* CircleImage.swift */,
 				509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */,
 				503B98D2267D30A4006F752F /* Assets.xcassets */,
@@ -319,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
+				509DF6AD268C55F700090624 /* NowExcerptPresenter.swift in Sources */,
 				509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
@@ -332,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				503B98FC267D30A4006F752F /* NowExcerptListView.swift in Sources */,
+				509DF6AE268C55F700090624 /* NowExcerptPresenter.swift in Sources */,
 				509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
