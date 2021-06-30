@@ -6,16 +6,19 @@ struct SubscribeView: View {
     @Binding var showSheetView: Bool
 
     @State var url: String = ""
-    let sheetTitle = "Add New Subscription"
+    let sheetTitle = "New Subscription"
 
     var body: some View {
         formWrapper {
-            HStack {
-                Text("URL:")
-                TextField("e.g. sivers.org/now", text: $url)
-                    .frame(minWidth: 250)
+            Form {
+                Section(header: Text("Website")) {
+                    HStack {
+                        Text("URL:")
+                        TextField("e.g. sivers.org/now", text: $url)
+                            .frame(minWidth: 250)
+                    }
+                }
             }
-            .navigationTitle(sheetTitle)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     cancelButton
@@ -31,14 +34,14 @@ struct SubscribeView: View {
     private func formWrapper<V: View>(@ViewBuilder _ contents: () -> V) -> some View {
         #if !os(macOS)
         NavigationView {
-            List {
-                contents()
-            }
+            contents()
+                .navigationBarTitle(sheetTitle, displayMode: .inline)
         }
         #else
         VStack {
-            // Since macOS 11, dialogs don't have titles, so we cannot see navigationTitle at all and should instead repeat it
-            Text(sheetTitle).bold()
+            // Since macOS 11, dialogs don't have titles, so we cannot see navigationTitle at all and should instead repeat it. But if we use `Form` here as well, the .toolbar won't be applied at the proper place
+            Text(sheetTitle)
+                .font(.headline)
             contents()
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         #endif
@@ -51,7 +54,7 @@ struct SubscribeView: View {
     }
 
     private var subscribeButton: some View {
-        Button("Subscribe") {
+        Button("Add") {
             print("subscribe to", url)
         }.keyboardShortcut(.defaultAction)
     }
