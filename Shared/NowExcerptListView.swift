@@ -18,7 +18,6 @@ struct NowExcerptListView: View {
     private var listView: some View {
         List(excerpts, id: \.id) { excerpt in
             NowExcerptView(excerpt: excerpt)
-                .padding(.bottom)
         }
     }
 }

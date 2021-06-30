@@ -5,15 +5,19 @@ import SwiftUI
 struct NowExcerptView: View {
     @State var excerpt: NowExcerptViewModel
 
+    #if !os(macOS)
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 10) {
                 CircleImage(image: excerpt.icon)
                 VStack(alignment: .leading) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(excerpt.title)
-                            .fontWeight(.bold)
-                        Spacer()
+                    Text(excerpt.title)
+                        .fontWeight(.bold)
+                    if #available(iOS 15.0, *) {
+                        Text(excerpt.updatedAt)
+                            .dynamicTypeSize(.small)
+                            .foregroundColor(.secondary)
+                    } else {
                         Text(excerpt.updatedAt)
                             .foregroundColor(.secondary)
                     }
@@ -23,6 +27,15 @@ struct NowExcerptView: View {
             }
         }
     }
+    #else
+    var body: some View {
+        HStack(alignment: .center, spacing: 10) {
+            CircleImage(image: excerpt.icon)
+            Text(excerpt.title)
+                .fontWeight(.bold)
+        }
+    }
+    #endif
 }
 
 struct NowExcerptView_Previews: PreviewProvider {

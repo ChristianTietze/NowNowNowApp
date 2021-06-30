@@ -5,10 +5,16 @@ import SwiftUI
 struct CircleImage: View {
     var image: Image
 
+    #if !os(macOS)
+    let size: CGFloat = 32
+    #else
+    let size: CGFloat = 24
+    #endif
+
     var body: some View {
         image
             .resizable()
-            .frame(width: 32, height: 32, alignment: .center)
+            .frame(width: size, height: size, alignment: .center)
             .fixedSize(horizontal: true, vertical: true)
             .aspectRatio(contentMode: .fit)
             .clipShape(Circle())
