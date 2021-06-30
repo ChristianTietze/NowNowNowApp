@@ -9,7 +9,7 @@ struct NowExcerptViewModel: Identifiable, Equatable, Hashable {
     let title: String
     let updatedAt: String
     let excerpt: String
-    let icon: Image?
+    let icon: Image
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
