@@ -6,22 +6,9 @@ struct NowExcerptListView: View {
     var excerpts: [NowExcerptViewModel]
 
     var body: some View {
-        List(excerpts, id: \.id) { item in
-            VStack(alignment: .leading) {
-                HStack(alignment: .top, spacing: 10) {
-                    CircleImage(image: item.icon)
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(item.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                            Text(item.updatedAt)
-                                .foregroundColor(.secondary)
-                        }
-                        Text(item.excerpt)
-                    }
-                }
-            }.padding(.bottom)
+        List(excerpts, id: \.id) { excerpt in
+            NowExcerptView(excerpt: excerpt)
+                .padding(.bottom)
         }
     }
 }
