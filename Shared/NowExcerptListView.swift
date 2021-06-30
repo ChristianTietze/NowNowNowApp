@@ -4,8 +4,8 @@ import SwiftUI
 
 struct NowExcerptListView: View {
     var excerpts: [NowExcerptViewModel] = [
-        NowExcerptViewModel(title: "Test", updatedAt: "2021-06-18", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", icon: nil),
-        NowExcerptViewModel(title: "Test 2", updatedAt: "2021-06-19", excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", icon: nil),
+        NowExcerptViewModel(id: UUID(), title: "Test", updatedAt: "2021-06-18", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", icon: nil),
+        NowExcerptViewModel(id: UUID(), title: "Test 2", updatedAt: "2021-06-19", excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", icon: nil),
     ]
 
     private var placeholderImage: Image {
@@ -13,7 +13,7 @@ struct NowExcerptListView: View {
     }
 
     var body: some View {
-        List(excerpts, id: \.title) { item in
+        List(excerpts, id: \.id) { item in
             VStack(alignment: .leading) {
                 HStack(alignment: .top, spacing: 10) {
                     CircleImage(image: item.icon ?? placeholderImage)
@@ -28,7 +28,7 @@ struct NowExcerptListView: View {
                         Text(item.excerpt)
                     }
                 }
-            }
+            }.padding(.bottom)
         }
     }
 }
