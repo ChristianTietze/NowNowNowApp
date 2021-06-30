@@ -2,6 +2,8 @@
 
 import SwiftUI
 
+/// On iOS, displays a short excerpt to get an overview.
+/// On macOS, displays the title only to navigate to the item in the detail pane.
 struct NowExcerptView: View {
     @State var excerpt: NowExcerptViewModel
 
@@ -9,10 +11,13 @@ struct NowExcerptView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 10) {
-                CircleImage(image: excerpt.icon)
+                CircleImage(image: excerpt.icon, size: .regular)
                 VStack(alignment: .leading) {
                     Text(excerpt.title)
                         .fontWeight(.bold)
+                    Text(excerpt.excerpt)
+                        .lineLimit(5)
+                        .padding(.bottom)
                     if #available(iOS 15.0, *) {
                         Text(excerpt.updatedAt)
                             .dynamicTypeSize(.small)
@@ -21,8 +26,6 @@ struct NowExcerptView: View {
                         Text(excerpt.updatedAt)
                             .foregroundColor(.secondary)
                     }
-                    Text(excerpt.excerpt)
-                        .lineLimit(5)
                 }
             }
         }
@@ -30,9 +33,8 @@ struct NowExcerptView: View {
     #else
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            CircleImage(image: excerpt.icon)
+            CircleImage(image: excerpt.icon, size: .small)
             Text(excerpt.title)
-                .fontWeight(.bold)
         }
     }
     #endif
