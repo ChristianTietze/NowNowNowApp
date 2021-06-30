@@ -8,7 +8,10 @@ struct NowNowNowApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NowExcerptListView(excerpts: $excerptPresenter.excerpts)
+            NavigationView {
+                NowExcerptListView(excerpts: $excerptPresenter.excerpts)
+                EmptyView()
+            }
         }
     }
 }

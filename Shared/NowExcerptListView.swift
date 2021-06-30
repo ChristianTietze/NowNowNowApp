@@ -6,6 +6,16 @@ struct NowExcerptListView: View {
     @Binding var excerpts: [NowExcerptViewModel]
 
     var body: some View {
+        listView
+            .navigationTitle("All Subscriptions")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    AddSubscriptionButton()
+                }
+            }
+    }
+
+    private var listView: some View {
         List(excerpts, id: \.id) { excerpt in
             NowExcerptView(excerpt: excerpt)
                 .padding(.bottom)
