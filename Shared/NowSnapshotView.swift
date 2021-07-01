@@ -7,7 +7,70 @@ struct NowSnapshotView: View {
 
     var body: some View {
         ScrollView {
+            VStack {
+                HStack.init(alignment: .center, spacing: 10) {
+                    Text(snapshot.title)
+                        .font(.title)
+                    Spacer()
+                    CircleImage(image: snapshot.icon, size: .regular)
+                }
+                HStack {
+                    Text(snapshot.updatedAt)
+                        .foregroundColor(.secondary)
+                        .__smallControlSize()
+                    Spacer()
+                }
+                Text(verbatim: snapshot.content)
+                    .font(.body)
+                    .padding(.top)
+            }
+            .padding()
+            .__enableTextSelection_macOS12_iOS15()
+        }.titled(snapshot.title)
+    }
+}
+
+extension View {
+    fileprivate func titled(_ string: String) -> some View {
+        #if !os(macOS)
+        self.navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(string)
+        #else
+        // We're keeping the default app name as the main title on macOS
+        self.navigationSubtitle(string)
+        #endif
+    }
+
+    fileprivate func __smallControlSize() -> AnyView {
+        // TODO: iOS 15+: Inline .controlSize
+        #if os(macOS)
+        return AnyView(self.controlSize(.small))
+        #elseif os(iOS)
+        if #available(iOS 15.0, *) {
+            return AnyView(self.controlSize(.small))
+        } else {
+            return AnyView(self)
         }
+        #else
+        return AnyView(self)
+        #endif
+    }
+
+    fileprivate func __enableTextSelection_macOS12_iOS15() -> AnyView {
+        // TODO: Drop the `AnyView` in favor of `some View` once the conditions can be removed.
+        #if !os(macOS)
+        if #available(iOS 15.0, *) {
+            return AnyView(self.textSelection(.enabled))
+        } else {
+            return AnyView(self)
+        }
+        #else
+        if #available(macOS 12.0, *) {
+            return AnyView(self.textSelection(.enabled))
+        } else {
+            return AnyView(self)
+        }
+        #endif
     }
 }
 
