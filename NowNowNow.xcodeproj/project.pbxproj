@@ -123,11 +123,8 @@
 			children = (
 				503B98D0267D30A2006F752F /* NowNowNowApp.swift */,
 				50738645268C9028004092A9 /* AddSubscriptionButton.swift */,
-				503B98D1267D30A2006F752F /* NowExcerptListView.swift */,
-				509DF6A9268C53D700090624 /* NowExcerptView.swift */,
-				503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */,
-				50738648268DA397004092A9 /* NowSnapshotViewModel.swift */,
-				5073864B268DA42E004092A9 /* NowSnapshotView.swift */,
+				5073864F268DB0D3004092A9 /* Excerpt Sidebar */,
+				5073864E268DB0C7004092A9 /* Snapshot Detail */,
 				509DF6AF268C814100090624 /* SubscribeView.swift */,
 				509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */,
 				503B9910267F66D8006F752F /* CircleImage.swift */,
@@ -179,6 +176,25 @@
 				503B98F8267D30A4006F752F /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		5073864E268DB0C7004092A9 /* Snapshot Detail */ = {
+			isa = PBXGroup;
+			children = (
+				50738648268DA397004092A9 /* NowSnapshotViewModel.swift */,
+				5073864B268DA42E004092A9 /* NowSnapshotView.swift */,
+			);
+			path = "Snapshot Detail";
+			sourceTree = "<group>";
+		};
+		5073864F268DB0D3004092A9 /* Excerpt Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				503B98D1267D30A2006F752F /* NowExcerptListView.swift */,
+				509DF6A9268C53D700090624 /* NowExcerptView.swift */,
+				503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */,
+			);
+			path = "Excerpt Sidebar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
