@@ -4,14 +4,35 @@ import SwiftUI
 
 @main
 struct NowNowNowApp: App {
-    @StateObject var excerptPresenter: NowExcerptPresenter = NowExcerptPresenter()
+    @StateObject var store = NowSnapshotStore.fixture()
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                NowExcerptListView(excerpts: $excerptPresenter.excerpts)
+                NowExcerptListView(store: store)
                 EmptyView()
             }
         }
+    }
+}
+
+extension NowSnapshotStore {
+    fileprivate static func fixture() -> NowSnapshotStore {
+        let urls: [URL] = [
+            URL(string: "https://mattgemmell.com/now")!,
+            URL(string: "https://sivers.org/now")!,
+                URL(string: "https://tyler.io/now/")!,
+            URL(string: "https://denisdefreyne.com/now/")!,
+            URL(string: "https://christiantietze.de/now")!
+        ]
+        let snapshots = urls.map { url -> NowSnapshot in
+            NowSnapshot(
+                id: UUID(),
+                title: url.host!,
+                url: url,
+                updatedAt: Date(),
+                content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+        }
+        return NowSnapshotStore(snapshots: snapshots)
     }
 }

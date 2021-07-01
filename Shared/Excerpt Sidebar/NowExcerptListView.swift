@@ -3,7 +3,11 @@
 import SwiftUI
 
 struct NowExcerptListView: View {
-    @Binding var excerpts: [NowExcerptViewModel]
+    @ObservedObject var store: NowSnapshotStore
+
+    var excerpts: [NowExcerptViewModel] {
+        store.allSnapshots.values.map(NowExcerptViewModel.init(fromSnapshot:))
+    }
     @State var selectedExcerpt: NowExcerptViewModel? = nil
 
     var body: some View {
@@ -29,13 +33,30 @@ struct NowExcerptListView: View {
     }
 }
 
+extension NowExcerptViewModel {
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .short
+        return dateFormatter
+    }()
+
+    init(fromSnapshot snapshot: NowSnapshot) {
+        self.init(
+            id: snapshot.id,
+            title: snapshot.title,
+            updatedAt: NowExcerptViewModel.dateFormatter.string(from: snapshot.updatedAt),
+            excerpt: String(snapshot.content.prefix(200)),
+            icon: .nowPlaceholderIcon)
+    }
+}
+
 struct NowExcerptListView_Previews: PreviewProvider {
     static var previews: some View {
         NowExcerptListView(
-            excerpts: .constant([
-                NowExcerptViewModel(id: UUID(), title: "Test", updatedAt: "2021-06-18", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", icon: .nowPlaceholderIcon),
-                NowExcerptViewModel(id: UUID(), title: "Test 2", updatedAt: "2021-06-19", excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", icon: .nowPlaceholderIcon),
-            ]),
-            selectedExcerpt: nil)
+            store: NowSnapshotStore(snapshots: [
+                NowSnapshot(id: UUID(), title: "Test", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+                NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"),
+            ]), selectedExcerpt: nil)
     }
 }
