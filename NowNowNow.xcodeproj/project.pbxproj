@@ -19,6 +19,10 @@
 		503B9912267F66D8006F752F /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B9910267F66D8006F752F /* CircleImage.swift */; };
 		50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738645268C9028004092A9 /* AddSubscriptionButton.swift */; };
 		50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738645268C9028004092A9 /* AddSubscriptionButton.swift */; };
+		50738649268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738648268DA397004092A9 /* NowSnapshotViewModel.swift */; };
+		5073864A268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738648268DA397004092A9 /* NowSnapshotViewModel.swift */; };
+		5073864C268DA42E004092A9 /* NowSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073864B268DA42E004092A9 /* NowSnapshotView.swift */; };
+		5073864D268DA42E004092A9 /* NowSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073864B268DA42E004092A9 /* NowSnapshotView.swift */; };
 		509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
@@ -62,6 +66,8 @@
 		503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptViewModel.swift; sourceTree = "<group>"; };
 		503B9910267F66D8006F752F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		50738645268C9028004092A9 /* AddSubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubscriptionButton.swift; sourceTree = "<group>"; };
+		50738648268DA397004092A9 /* NowSnapshotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSnapshotViewModel.swift; sourceTree = "<group>"; };
+		5073864B268DA42E004092A9 /* NowSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSnapshotView.swift; sourceTree = "<group>"; };
 		509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+nowPlaceholderIcon.swift"; sourceTree = "<group>"; };
 		509DF6A9268C53D700090624 /* NowExcerptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptView.swift; sourceTree = "<group>"; };
 		509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptPresenter.swift; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 				503B98D1267D30A2006F752F /* NowExcerptListView.swift */,
 				509DF6A9268C53D700090624 /* NowExcerptView.swift */,
 				503B990D267DDF1E006F752F /* NowExcerptViewModel.swift */,
+				50738648268DA397004092A9 /* NowSnapshotViewModel.swift */,
+				5073864B268DA42E004092A9 /* NowSnapshotView.swift */,
 				509DF6AF268C814100090624 /* SubscribeView.swift */,
 				509DF6AC268C55F700090624 /* NowExcerptPresenter.swift */,
 				503B9910267F66D8006F752F /* CircleImage.swift */,
@@ -330,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5073864C268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
 				509DF6AD268C55F700090624 /* NowExcerptPresenter.swift in Sources */,
 				509DF6B0268C814100090624 /* SubscribeView.swift in Sources */,
@@ -338,6 +347,7 @@
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
 				503B990E267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
+				50738649268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */,
 				509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5073864D268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				503B98FC267D30A4006F752F /* NowExcerptListView.swift in Sources */,
 				509DF6AE268C55F700090624 /* NowExcerptPresenter.swift in Sources */,
 				509DF6B1268C814100090624 /* SubscribeView.swift in Sources */,
@@ -354,6 +365,7 @@
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
 				503B990F267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
+				5073864A268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */,
 				509DF6AB268C53D700090624 /* NowExcerptView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
