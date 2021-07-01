@@ -12,11 +12,7 @@ struct SubscribeView: View {
         formWrapper {
             Form {
                 Section(header: Text("Website")) {
-                    HStack {
-                        Text("URL:")
-                        TextField("e.g. sivers.org/now", text: $url)
-                            .frame(minWidth: 250)
-                    }
+                    urlTextField
                 }
             }
             .toolbar {
@@ -45,6 +41,17 @@ struct SubscribeView: View {
             contents()
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
         #endif
+    }
+
+    private var urlTextField: some View {
+        HStack {
+            #if os(macOS)
+            // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
+            Text("URL:")
+            #endif
+            TextField("URL, e.g. sivers.org/now", text: $url)
+                .frame(minWidth: 250)
+        }
     }
 
     private var cancelButton: some View {
