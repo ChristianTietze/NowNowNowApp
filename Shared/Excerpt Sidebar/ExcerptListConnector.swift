@@ -11,7 +11,7 @@ extension Connectors {
 
         func connect(action: NowExcerptListView.Action) -> AppAction {
             switch action {
-            case .select(let id): return .selectSnapshot(id)
+            case .delete(let id): return .deleteSnapshot(id)
             }
         }
     }

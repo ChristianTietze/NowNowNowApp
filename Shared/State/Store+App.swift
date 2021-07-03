@@ -7,13 +7,12 @@ struct AppState: Equatable {
 }
 
 enum AppAction {
-    case selectSnapshot(NowSnapshot.ID)
+    case deleteSnapshot(NowSnapshot.ID)
 }
 
 func appReducer(state: inout AppState, action: AppAction) {
     switch action {
-    case .selectSnapshot(let id):
-        // TODO: implement
-        break
+    case .deleteSnapshot(let id):
+        state.nowSnapshots.removeAll(where: { $0.id == id })
     }
 }
