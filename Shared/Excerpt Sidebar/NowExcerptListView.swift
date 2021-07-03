@@ -6,7 +6,10 @@ struct NowExcerptListView: View {
     @ObservedObject var store: NowSnapshotStore
 
     var excerpts: [NowExcerptViewModel] {
-        store.allSnapshots.values.map(NowExcerptViewModel.init(fromSnapshot:))
+        store.allSnapshots
+            .values
+            .sorted(by: \.updatedAt, order: .descending)
+            .map(NowExcerptViewModel.init(fromSnapshot:))
     }
     @State var selectedExcerpt: NowExcerptViewModel? = nil
 
