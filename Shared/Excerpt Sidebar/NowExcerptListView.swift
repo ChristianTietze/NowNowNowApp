@@ -3,12 +3,10 @@
 import SwiftUI
 
 struct NowExcerptListView: View {
-    @ObservedObject var store: NowSnapshotStore
+    @ObservedObject var store: AppStore
 
     var excerpts: [NowExcerptViewModel] {
-        store.allSnapshots
-            .values
-            .sorted(by: \.updatedAt, order: .descending)
+        store.state.nowSnapshots
             .map(NowExcerptViewModel.init(fromSnapshot:))
     }
     @State var selectedExcerpt: NowExcerptViewModel? = nil
@@ -57,9 +55,12 @@ extension NowExcerptViewModel {
 struct NowExcerptListView_Previews: PreviewProvider {
     static var previews: some View {
         NowExcerptListView(
-            store: NowSnapshotStore(snapshots: [
-                NowSnapshot(id: UUID(), title: "Test", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-                NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"),
-            ]), selectedExcerpt: nil)
+            store: AppStore(
+                initialState: AppState(nowSnapshots: [
+                    NowSnapshot(id: UUID(), title: "Test", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+                    NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "http://example.com/now")!, updatedAt: Date(), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"),
+                ]),
+                reducer: appReducer),
+            selectedExcerpt: nil)
     }
 }
