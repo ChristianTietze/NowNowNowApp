@@ -9,7 +9,8 @@ struct NowNowNowApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                NowExcerptListView(store: store)
+                NowExcerptListView(viewModel: store.connect(using: Connectors.ExcerptList()),
+                                   selectedExcerpt: nil)
                 EmptyView()
             }
         }

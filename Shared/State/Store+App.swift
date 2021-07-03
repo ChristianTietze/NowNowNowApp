@@ -6,9 +6,14 @@ struct AppState: Equatable {
     var nowSnapshots: [NowSnapshot] = []
 }
 
-enum AppAction {}
+enum AppAction {
+    case selectSnapshot(NowSnapshot.ID)
+}
 
 func appReducer(state: inout AppState, action: AppAction) {
     switch action {
+    case .selectSnapshot(let id):
+        // TODO: implement
+        break
     }
 }

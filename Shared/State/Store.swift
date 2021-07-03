@@ -36,13 +36,47 @@ extension Store {
             initialState: deriveState(state),
             reducer: { _, action in
                 self.send(embedAction(action))
-            }
-        )
+            })
         $state
             .map(deriveState)
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .assign(to: &store.$state)
         return store
+    }
+}
+
+extension Store {
+    static func stub(with state: State) -> Store {
+        Store(initialState: state,
+              reducer: { _, _ in })
+    }
+}
+
+// MARK: Connectors: Adapters of actions and presenters of view state
+
+/// Namespace for `Connector` types.
+enum Connectors {}
+
+/// See <https://swiftwithmajid.com/2021/02/03/redux-like-state-container-in-swiftui-part4/>
+protocol Connector {
+    associatedtype State
+    associatedtype Action
+    associatedtype ViewState: Equatable
+    associatedtype ViewAction: Equatable
+
+    func connect(state: State) -> ViewState
+    func connect(action: ViewAction) -> Action
+}
+
+extension Store {
+    /// See <https://swiftwithmajid.com/2021/02/03/redux-like-state-container-in-swiftui-part4/>
+    func connect<C: Connector>(
+        using connector: C
+    ) -> Store<C.ViewState, C.ViewAction> where C.State == State, C.Action == Action {
+        derived(
+            deriveState: connector.connect(state:),
+            embedAction: connector.connect(action:)
+        )
     }
 }
