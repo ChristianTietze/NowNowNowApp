@@ -16,6 +16,7 @@ struct NowExcerptListView: View {
     @ObservedObject var viewModel: ViewModel
 
     @SwiftUI.State var selectedExcerpt: NowExcerptViewModel? = nil
+    @SwiftUI.State var isDeletionAlertShown = false
 
     var body: some View {
         listView
@@ -45,19 +46,32 @@ struct NowExcerptListView: View {
             }
             .listStyle(.sidebar)
         }
-        .x_onDeleteCommand {
+        .alert(isPresented: $isDeletionAlertShown) { deletionAlert }
+        .x_onDeleteCommand { isDeletionAlertShown = true }
+    }
+
+    private var deletionAlert: Alert {
+        let deletionButton = Alert.Button.destructive(Text("Delete"), action: {
             guard let selectedExcerpt = selectedExcerpt else { return }
             viewModel.send(.delete(selectedExcerpt.id))
-        }
+        })
+        return Alert(title: Text("Delete /now Page?"),
+              message: Text("Do you really want to delete this subscription?"),
+              primaryButton: deletionButton,
+              secondaryButton: .cancel())
     }
 }
 
 extension View {
+    // Is this weird approach to cross-platform view event handling really the intended way to do things?
+
     #if !os(macOS)
+    /// Does nothing on iOS.
     fileprivate func x_onDeleteCommand(perform action: (() -> Void)?) -> some View {
         self
     }
     #else
+    /// Edit > Delete menu item on macOS.
     fileprivate func x_onDeleteCommand(perform action: (() -> Void)?) -> some View {
         self.onDeleteCommand(perform: action)
     }
