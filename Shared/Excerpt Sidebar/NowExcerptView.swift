@@ -33,8 +33,13 @@ struct NowExcerptView: View {
     #else
     var body: some View {
         HStack(alignment: .center, spacing: 10) {
-            CircleImage(image: excerpt.icon, size: .small)
-            Text(excerpt.title)
+            CircleImage(image: excerpt.icon, size: .regular)
+            VStack(alignment: .leading, spacing: nil) {
+                Text(excerpt.title)
+                Text(excerpt.updatedAt)
+                    .controlSize(.small)
+                    .foregroundColor(.secondary)
+            }
         }
     }
     #endif
