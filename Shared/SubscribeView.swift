@@ -26,7 +26,6 @@ struct SubscribeView: View {
         }
     }
 
-    @ViewBuilder
     private func formWrapper<V: View>(@ViewBuilder _ contents: () -> V) -> some View {
         #if !os(macOS)
         NavigationView {
