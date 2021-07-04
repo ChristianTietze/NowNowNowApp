@@ -20,7 +20,7 @@ struct NowExcerptListView: View {
 
     var body: some View {
         listView
-            .navigationTitle("All Subscriptions")
+            .navigationTitle("All /now Pages")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     AddSubscriptionButton(labelStyle: .iconOnly)
