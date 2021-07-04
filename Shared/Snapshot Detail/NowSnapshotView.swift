@@ -8,21 +8,26 @@ struct NowSnapshotView: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack.init(alignment: .center, spacing: 10) {
+                HStack(alignment: .top, spacing: 10) {
                     Text(snapshot.title)
                         .font(.title)
                     Spacer()
                     CircleImage(image: snapshot.icon, size: .regular)
-                }
+                }.padding(.horizontal)
+
                 HStack {
                     Text(snapshot.updatedAt)
                         .foregroundColor(.secondary)
                         .__smallControlSize()
                     Spacer()
-                }
+                }.padding(.horizontal)
+
                 Text(verbatim: snapshot.content)
                     .font(.body)
-                    .padding(.top)
+                    .lineSpacing(4)
+                    .padding()  // Padding inside from text to borderk to
+                    .background(Color.white)
+                    .cornerRadius(4)
             }
             .padding()
             .__enableTextSelection_macOS12_iOS15()
