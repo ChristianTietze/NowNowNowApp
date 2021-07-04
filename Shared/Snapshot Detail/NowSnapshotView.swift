@@ -37,7 +37,7 @@ struct NowSnapshotView: View {
                 Text(verbatim: snapshot.content)
                     .font(font)
                     .lineSpacing(4)
-                    .padding()  // Padding inside from text to borderk to
+                    .padding()  // Padding inside from text to bordered white box to the text
                     .background(Color("TextBackgroundColor", bundle: nil))  // TODO: Replace with .init(nsColor:) after macOS 10.12
                     .cornerRadius(4)
             }
