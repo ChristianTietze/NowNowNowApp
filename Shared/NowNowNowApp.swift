@@ -12,7 +12,7 @@ struct NowNowNowApp: App {
             NavigationView {
                 NowExcerptListView(viewModel: store.connect(using: Connectors.ExcerptList()),
                                    selectedExcerpt: nil)
-                EmptyView()
+                ContentPlaceholderView()
             }.environment(\.fontSize, $fontSize)
         }
         // Font +/- menu items for macOS; irrelevant on iOS due to dynamic type.
