@@ -40,11 +40,13 @@ struct NowExcerptListView: View {
                 }
             }
             .onDelete { indexSet in
+                // Delete selected items on iOS right away
                 indexSet
                     .map { viewModel.state.excerpts[$0].id }
                     .forEach { viewModel.send(.delete($0)) }
             }
         }
+        .frame(minWidth: 200, alignment: .topLeading)
         .modifier(UniversalSidebarStyleModifier())
         .alert(isPresented: $isDeletionAlertShown) { deletionAlert }
         .__onDeleteCommand { isDeletionAlertShown = true }
