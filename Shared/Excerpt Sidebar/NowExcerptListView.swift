@@ -23,7 +23,7 @@ struct NowExcerptListView: View {
             .navigationTitle("All Subscriptions")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    AddSubscriptionButton()
+                    AddSubscriptionButton(labelStyle: .iconOnly)
                 }
             }
     }
