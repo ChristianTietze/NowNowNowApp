@@ -8,7 +8,14 @@ struct NowSnapshotView: View {
     @Environment(\.fontSize) private var fontSize: Binding<Double>
 
     var font: Font {
+        #if !os(macOS)
+        // Use dynamic font on iOS. Users can increase the font size system-wide.
+        Font.body
+        #else
+        // Use custom font size on macOS. Users can increase/decrease the font size via `Command`s because
+        // the default body size is a bit small to comfortable *read* a text.
         Font.system(size: fontSize.wrappedValue, weight: .regular, design: .default)
+        #endif
     }
 
     var minTextWidth: CGFloat { 200 }

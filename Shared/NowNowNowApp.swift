@@ -15,36 +15,8 @@ struct NowNowNowApp: App {
                 EmptyView()
             }.environment(\.fontSize, $fontSize)
         }
-        .commands {
-            CommandGroup(after: .sidebar) {
-                Button(action: {
-                    fontSize = min(fontSize + 1, 64)
-                }) {
-                    Text("Increase Font Size")
-                }
-                .modifier(MenuButtonStyling())
-                .keyboardShortcut(KeyEquivalent("+"), modifiers: [.command])
-
-                Button(action: {
-                    fontSize = max(fontSize - 1, 8)
-                }) {
-                    Text("Decrease Font Size")
-                }
-                .modifier(MenuButtonStyling())
-                .keyboardShortcut(KeyEquivalent("-"), modifiers: [.command])
-
-                Button(action: {
-                    fontSize = FontSizeKey.initialValue
-                }) {
-                    Text("Reset to Default Font Size")
-                }
-                .modifier(MenuButtonStyling())
-                .keyboardShortcut(KeyEquivalent("0"), modifiers: [.command])
-
-
-                Divider()  // (After this comes the Enter/Exit Full Screen Menu)
-            }
-        }
+        // Font +/- menu items for macOS; irrelevant on iOS due to dynamic type.
+        .commands { fontSizeCommandGroup() }
     }
 }
 
