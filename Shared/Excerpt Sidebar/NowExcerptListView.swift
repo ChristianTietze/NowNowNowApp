@@ -47,7 +47,7 @@ struct NowExcerptListView: View {
             .listStyle(.sidebar)
         }
         .alert(isPresented: $isDeletionAlertShown) { deletionAlert }
-        .x_onDeleteCommand { isDeletionAlertShown = true }
+        .__onDeleteCommand { isDeletionAlertShown = true }
     }
 
     private var deletionAlert: Alert {
@@ -67,12 +67,12 @@ extension View {
 
     #if !os(macOS)
     /// Does nothing on iOS.
-    fileprivate func x_onDeleteCommand(perform action: (() -> Void)?) -> some View {
+    fileprivate func __onDeleteCommand(perform action: (() -> Void)?) -> some View {
         self
     }
     #else
     /// Edit > Delete menu item on macOS.
-    fileprivate func x_onDeleteCommand(perform action: (() -> Void)?) -> some View {
+    fileprivate func __onDeleteCommand(perform action: (() -> Void)?) -> some View {
         self.onDeleteCommand(perform: action)
     }
     #endif
