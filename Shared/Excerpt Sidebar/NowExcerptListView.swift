@@ -44,8 +44,8 @@ struct NowExcerptListView: View {
                     .map { viewModel.state.excerpts[$0].id }
                     .forEach { viewModel.send(.delete($0)) }
             }
-            .listStyle(.sidebar)
         }
+        .modifier(UniversalSidebarStyleModifier())
         .alert(isPresented: $isDeletionAlertShown) { deletionAlert }
         .__onDeleteCommand { isDeletionAlertShown = true }
     }
@@ -59,6 +59,20 @@ struct NowExcerptListView: View {
               message: Text("Do you really want to delete this subscription?"),
               primaryButton: deletionButton,
               secondaryButton: .cancel())
+    }
+}
+
+struct UniversalSidebarStyleModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        #if !os(macOS)
+        // .sidebar would be inappropriate because we're displaying larger content cells, like
+        // mails in Mail.app, and unlike mailboxes/accounts.
+        content.listStyle(.inset)
+        #else
+        // On macOS, we display only the /now page subscriptions, so a Sidebar is a better fit.
+        // Also, .inset as the leftmost split doesn't paint the window title bar correctly.
+        content.listStyle(.sidebar)
+        #endif
     }
 }
 
