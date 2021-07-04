@@ -5,6 +5,16 @@ import SwiftUI
 struct NowSnapshotView: View {
     let snapshot: NowSnapshotViewModel
 
+    @State var fontSize: CGFloat = NSFont.systemFontSize
+
+    var font: Font {
+        Font.system(size: fontSize, weight: .regular, design: .default)
+    }
+
+    /// Rough estimate of a readable max width based on the font size.
+    /// (Would use `font`'s em-width, but apparently that's not accessible.)
+    var maxTextWidth: CGFloat { fontSize * 50 }
+
     var body: some View {
         ScrollView {
             VStack {
@@ -23,7 +33,7 @@ struct NowSnapshotView: View {
                 }.padding(.horizontal)
 
                 Text(verbatim: snapshot.content)
-                    .font(.body)
+                    .font(font)
                     .lineSpacing(4)
                     .padding()  // Padding inside from text to borderk to
                     .background(Color.white)
@@ -31,7 +41,9 @@ struct NowSnapshotView: View {
             }
             .padding()
             .__enableTextSelection_macOS12_iOS15()
-        }.titled(snapshot.title)
+        }
+        .titled(snapshot.title)
+        .frame(minWidth: 200, maxWidth: maxTextWidth, alignment: .leading)
     }
 }
 
