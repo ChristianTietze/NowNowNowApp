@@ -5,6 +5,7 @@ import SwiftUI
 @main
 struct NowNowNowApp: App {
     @StateObject var store = AppStore.fixture()
+    @AppStorage("fontSize") var fontSize: Double = FontSizeKey.initialValue
 
     var body: some Scene {
         WindowGroup {
@@ -12,6 +13,36 @@ struct NowNowNowApp: App {
                 NowExcerptListView(viewModel: store.connect(using: Connectors.ExcerptList()),
                                    selectedExcerpt: nil)
                 EmptyView()
+            }.environment(\.fontSize, $fontSize)
+        }
+        .commands {
+            CommandGroup(after: .sidebar) {
+                Button(action: {
+                    fontSize = min(fontSize + 1, 64)
+                }) {
+                    Text("Increase Font Size")
+                }
+                .modifier(MenuButtonStyling())
+                .keyboardShortcut(KeyEquivalent("+"), modifiers: [.command])
+
+                Button(action: {
+                    fontSize = max(fontSize - 1, 8)
+                }) {
+                    Text("Decrease Font Size")
+                }
+                .modifier(MenuButtonStyling())
+                .keyboardShortcut(KeyEquivalent("-"), modifiers: [.command])
+
+                Button(action: {
+                    fontSize = FontSizeKey.initialValue
+                }) {
+                    Text("Reset to Default Font Size")
+                }
+                .modifier(MenuButtonStyling())
+                .keyboardShortcut(KeyEquivalent("0"), modifiers: [.command])
+
+
+                Divider()  // (After this comes the Enter/Exit Full Screen Menu)
             }
         }
     }
@@ -37,5 +68,14 @@ extension AppStore {
         return Store<AppState, AppAction>(
             initialState: AppState(nowSnapshots: snapshots),
             reducer: appReducer)
+    }
+}
+
+struct MenuButtonStyling: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.primary)
+            .padding(.bottom, 2)
+            .padding(.top, 1)
     }
 }

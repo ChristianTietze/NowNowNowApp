@@ -5,15 +5,17 @@ import SwiftUI
 struct NowSnapshotView: View {
     let snapshot: NowSnapshotViewModel
 
-    @State var fontSize: CGFloat = NSFont.systemFontSize
+    @Environment(\.fontSize) private var fontSize: Binding<Double>
 
     var font: Font {
-        Font.system(size: fontSize, weight: .regular, design: .default)
+        Font.system(size: fontSize.wrappedValue, weight: .regular, design: .default)
     }
+
+    var minTextWidth: CGFloat { 200 }
 
     /// Rough estimate of a readable max width based on the font size.
     /// (Would use `font`'s em-width, but apparently that's not accessible.)
-    var maxTextWidth: CGFloat { fontSize * 50 }
+    var maxTextWidth: CGFloat { max(fontSize.wrappedValue * 50, minTextWidth) }
 
     var body: some View {
         ScrollView {
@@ -43,7 +45,7 @@ struct NowSnapshotView: View {
             .__enableTextSelection_macOS12_iOS15()
         }
         .titled(snapshot.title)
-        .frame(minWidth: 200, maxWidth: maxTextWidth, alignment: .leading)
+        .frame(minWidth: minTextWidth, maxWidth: maxTextWidth, alignment: .leading)
     }
 }
 
