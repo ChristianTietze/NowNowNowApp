@@ -22,9 +22,7 @@ struct NowPageURLView: View {
                     .frame(minWidth: 250)
             }
 
-            Text(urlValidator.isPerformingNetworkActivity ? "Active" : "-")
-
-            Text(urlValidator.validURL.map(\.absoluteString) ?? "(none)")
+            LoadingIndicatorView(isLoading: $urlValidator.isPerformingNetworkActivity)
         }
     }
 }
