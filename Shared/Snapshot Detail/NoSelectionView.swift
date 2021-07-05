@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct ContentPlaceholderView: View {
+struct NoSelectionView: View {
     var nowSnapshotsExist = false
 
     var body: some View {
@@ -28,6 +28,6 @@ struct ContentPlaceholderView: View {
 
 struct ContentPlaceholderView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentPlaceholderView()
+        NoSelectionView()
     }
 }
