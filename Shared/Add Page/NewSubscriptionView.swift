@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-struct SubscribeView: View {
+struct NewSubscriptionView: View {
     @Binding var showSheetView: Bool
 
     @State var url: String = ""
@@ -66,10 +66,10 @@ struct SubscribeView: View {
     }
 }
 
-struct SubscribeView_Previews: PreviewProvider {
+struct NewSubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SubscribeView(showSheetView: .constant(true))
-                  }
+            NewSubscriptionView(showSheetView: .constant(true))
+        }
     }
 }

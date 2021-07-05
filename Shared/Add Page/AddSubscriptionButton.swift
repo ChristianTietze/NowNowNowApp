@@ -14,7 +14,7 @@ struct AddSubscriptionButton<Style: LabelStyle>: View {
             Label("Add /now Page", systemImage: "plus")
                 .labelStyle(labelStyle)
         }).sheet(isPresented: $showSheetView) {
-            SubscribeView(showSheetView: $showSheetView)
+            NewSubscriptionView(showSheetView: $showSheetView)
         }
     }
 }
