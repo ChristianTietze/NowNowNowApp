@@ -137,7 +137,7 @@ struct NowPageURLView: View {
                 #endif
 
                 TextField("URL, e.g. sivers.org/now", text: $urlValidator.text)
-                    .disableAutocorrection(true)
+                    .unfilteredInput()
                     .frame(minWidth: 250)
             }
 
