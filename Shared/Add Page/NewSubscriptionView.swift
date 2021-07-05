@@ -58,22 +58,53 @@ struct NewSubscriptionView: View {
     }
 }
 
+import Combine
+
+class NowPageURLValidator: ObservableObject {
+    @Published var text: String = ""
+
+    var potentiallyValidURL: AnyPublisher<URL?, Never> {
+        $text
+            .removeDuplicates()
+            .debounce(for: 0.2, scheduler: RunLoop.main)
+            .map(URL.init(string:))
+            .map { ($0?.isPotentiallyValid() ?? false) ? $0 : nil }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension URL {
+    /// Tests URL for reachability based on `NSURLConnection.canHandle`.
+    fileprivate func isPotentiallyValid() -> Bool {
+        let request = URLRequest(url: self)
+        let canHandle = NSURLConnection.canHandle(request)
+        return canHandle
+    }
+}
+
 struct NowPageURLView: View {
-    @State var url: String = ""
+    @StateObject var urlValidator = NowPageURLValidator()
+    @State private var validURL: URL?
 
     var body: some View {
         urlTextField
     }
 
     private var urlTextField: some View {
-        HStack {
-            #if os(macOS)
-            // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
-            Text("URL:")
-            #endif
+        VStack(alignment: .leading, spacing: 20) {
+            HStack {
+                #if os(macOS)
+                // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
+                Text("URL:")
+                #endif
 
-            TextField("URL, e.g. sivers.org/now", text: $url)
-                .frame(minWidth: 250)
+                TextField("URL, e.g. sivers.org/now", text: $urlValidator.text)
+                    .disableAutocorrection(true)
+                    .frame(minWidth: 250)
+            }
+
+            Text("\(validURL?.absoluteString ?? "")")
+                .onReceive(urlValidator.potentiallyValidURL) { validURL = $0 }
         }
     }
 }
