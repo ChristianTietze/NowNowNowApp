@@ -5,14 +5,13 @@ import SwiftUI
 struct NewSubscriptionView: View {
     @Binding var showSheetView: Bool
 
-    @State var url: String = ""
     let sheetTitle = "New Subscription"
 
     var body: some View {
         formWrapper {
             Form {
                 Section(header: Text("Website")) {
-                    urlTextField
+                    NowPageURLView()
                 }
             }
             .toolbar {
@@ -42,27 +41,40 @@ struct NewSubscriptionView: View {
         #endif
     }
 
+    private var cancelButton: some View {
+        Button("Cancel") {
+            dismiss()
+        }.keyboardShortcut(.cancelAction)
+    }
+
+    private var subscribeButton: some View {
+        Button("Add") {
+            dismiss()
+        }.keyboardShortcut(.defaultAction)
+    }
+
+    private func dismiss() {
+        showSheetView = false
+    }
+}
+
+struct NowPageURLView: View {
+    @State var url: String = ""
+
+    var body: some View {
+        urlTextField
+    }
+
     private var urlTextField: some View {
         HStack {
             #if os(macOS)
             // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
             Text("URL:")
             #endif
+
             TextField("URL, e.g. sivers.org/now", text: $url)
                 .frame(minWidth: 250)
         }
-    }
-
-    private var cancelButton: some View {
-        Button("Cancel") {
-            self.showSheetView = false
-        }.keyboardShortcut(.cancelAction)
-    }
-
-    private var subscribeButton: some View {
-        Button("Add") {
-            print("subscribe to", url)
-        }.keyboardShortcut(.defaultAction)
     }
 }
 
