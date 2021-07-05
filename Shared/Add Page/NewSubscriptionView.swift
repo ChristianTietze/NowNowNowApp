@@ -58,34 +58,6 @@ struct NewSubscriptionView: View {
     }
 }
 
-struct NowPageURLView: View {
-    @StateObject var urlValidator = NowPageURLValidator()
-
-    var body: some View {
-        urlTextField
-    }
-
-    private var urlTextField: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                #if os(macOS)
-                // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
-                Text("URL:")
-                #endif
-
-                TextField("URL, e.g. sivers.org/now", text: $urlValidator.text)
-                    .unfilteredInput()
-                    .frame(minWidth: 250)
-            }
-
-            Text(urlValidator.isPerformingNetworkActivity ? "Active" : "-")
-
-            Text(urlValidator.validURL.map(\.absoluteString) ?? "(none)")
-
-        }
-    }
-}
-
 struct NewSubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
