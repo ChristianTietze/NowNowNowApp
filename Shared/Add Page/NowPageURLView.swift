@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct NowPageURLView: View {
-    @StateObject var urlValidator = NowPageURLValidator()
+    @ObservedObject var urlValidator: NowPageURLValidator
 
     var body: some View {
         urlTextField

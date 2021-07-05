@@ -32,6 +32,9 @@ extension URL {
         guard let url = URL(string: string)
         else { return Just(nil).eraseToAnyPublisher() }
 
+        // Start activity indication early
+        networkActivityPublisher.send(true)
+
         var request = URLRequest(url: url)
         request.httpMethod = "HEAD"  // Just perform a check, don't fetch content
 
@@ -59,7 +62,6 @@ extension URL {
 
 extension HTTPURLResponse {
     var isStatusIndicatedReachability: Bool {
-        (200 ..< 400).contains(statusCode)
-        || statusCode == 405
+        (200 ..< 400).contains(statusCode) || statusCode == 405
     }
 }

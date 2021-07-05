@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct NewSubscriptionView: View {
+    @StateObject var urlValidator = NowPageURLValidator()
+
     @Binding var showSheetView: Bool
 
     let sheetTitle = "New Subscription"
@@ -11,7 +13,7 @@ struct NewSubscriptionView: View {
         formWrapper {
             Form {
                 Section(header: Text("Website")) {
-                    NowPageURLView()
+                    NowPageURLView(urlValidator: urlValidator)
                 }
             }
             .toolbar {
@@ -44,13 +46,16 @@ struct NewSubscriptionView: View {
     private var cancelButton: some View {
         Button("Cancel") {
             dismiss()
-        }.keyboardShortcut(.cancelAction)
+        }
+        .keyboardShortcut(.cancelAction)
     }
 
     private var subscribeButton: some View {
         Button("Add") {
             dismiss()
-        }.keyboardShortcut(.defaultAction)
+        }
+        .keyboardShortcut(.defaultAction)
+        .disabled(urlValidator.validURL == nil)
     }
 
     private func dismiss() {
