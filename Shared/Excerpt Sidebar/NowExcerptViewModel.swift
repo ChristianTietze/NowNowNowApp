@@ -33,6 +33,7 @@ extension NowExcerptViewModel {
             title: snapshot.title,
             updatedAt: NowExcerptViewModel.dateFormatter.string(from: snapshot.updatedAt),
             excerpt: String(snapshot.content.prefix(200)),
+            // TODO: Use real icon
             icon: .nowPlaceholderIcon)
     }
 }

@@ -12,16 +12,14 @@ extension AppState: HasNowSnapshots {}
 struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: HasNowSnapshots {
     private let store: Store
 
-    @ObservedObject private var excerpts: Subscriber<[NowExcerptViewModel]>
+    @ObservedObject private var snapshots: Subscriber<[NowSnapshot]>
 
-    @SwiftUI.State var selectedExcerpt: NowExcerptViewModel? = nil
+    @SwiftUI.State var selectedSnapshot: NowSnapshot? = nil
     @SwiftUI.State var isDeletionAlertShown = false
 
     init(store: Store) {
         self.store = store
-        self.excerpts = Subscriber(store) { $0.select {
-            $0.nowSnapshots.map(NowExcerptViewModel.init(fromSnapshot:))
-        } }
+        self.snapshots = Subscriber(store) { $0.select(\.nowSnapshots) }
     }
 
     var body: some View {
@@ -37,19 +35,19 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
 
     private var listView: some View {
         List {
-            ForEach(excerpts.value, id: \.id) { excerpt in
+            ForEach(snapshots.value, id: \.id) { snapshot in
                 NavigationLink(
-                    destination: NowSnapshotView(snapshot: NowSnapshotViewModel(id: excerpt.id, title: excerpt.title, updatedAt: excerpt.updatedAt, content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", icon: excerpt.icon)),
-                    tag: excerpt,
-                    selection: $selectedExcerpt)
+                    destination: NowSnapshotView(snapshot: NowSnapshotViewModel(fromSnapshot: snapshot)),
+                    tag: snapshot,
+                    selection: $selectedSnapshot)
                 {
-                    NowExcerptView(excerpt: excerpt)
+                    NowExcerptView(excerpt: NowExcerptViewModel(fromSnapshot: snapshot))
                 }
             }
             .onDelete { indexSet in
                 // Delete selected items on iOS right away
                 indexSet
-                    .map { excerpts.value[$0].id }
+                    .map { snapshots.value[$0].id }
                     .forEach { store.dispatch(DeleteNowPage(id: $0)) }
             }
         }
@@ -61,8 +59,8 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
 
     private var deletionAlert: Alert {
         let deletionButton = Alert.Button.destructive(Text("Delete"), action: {
-            guard let selectedExcerpt = selectedExcerpt else { return }
-            store.dispatch(DeleteNowPage(id: selectedExcerpt.id))
+            guard let selectedSnapshot = selectedSnapshot else { return }
+            store.dispatch(DeleteNowPage(id: selectedSnapshot.id))
         })
         return Alert(title: Text("Delete /now Page?"),
               message: Text("Do you really want to delete this subscription?"),
