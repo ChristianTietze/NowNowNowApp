@@ -71,6 +71,8 @@
 		50D6F2F726947FCD00A50976 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F526947FCD00A50976 /* Dispatcher.swift */; };
 		50D6F2F9269482B400A50976 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F8269482B400A50976 /* Array+extensions.swift */; };
 		50D6F2FA269482B400A50976 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F8269482B400A50976 /* Array+extensions.swift */; };
+		50D6F2FC2694855700A50976 /* UpdatedAtFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */; };
+		50D6F2FD2694855700A50976 /* UpdatedAtFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,7 @@
 		50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+minWindowHeight.swift"; sourceTree = "<group>"; };
 		50D6F2F526947FCD00A50976 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		50D6F2F8269482B400A50976 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
+		50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAtFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				503B98D0267D30A2006F752F /* NowNowNowApp.swift */,
+				50D6F2FE2694856A00A50976 /* Model */,
 				50656436269074D500076639 /* State */,
 				5073864F268DB0D3004092A9 /* Excerpt Sidebar */,
 				5073864E268DB0C7004092A9 /* Snapshot Detail */,
@@ -270,7 +274,6 @@
 				50D6F2E126945E4500A50976 /* Subscriber.swift */,
 				50D6F2F526947FCD00A50976 /* Dispatcher.swift */,
 				50D6F2DE26945D3F00A50976 /* AppState.swift */,
-				50738653268DB19B004092A9 /* NowSnapshot.swift */,
 				50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */,
 			);
 			path = State;
@@ -279,9 +282,9 @@
 		5073864E268DB0C7004092A9 /* Snapshot Detail */ = {
 			isa = PBXGroup;
 			children = (
-				50738648268DA397004092A9 /* NowSnapshotViewModel.swift */,
-				5073864B268DA42E004092A9 /* NowSnapshotView.swift */,
 				50544D1026921E8600F704D7 /* NoSelectionView.swift */,
+				5073864B268DA42E004092A9 /* NowSnapshotView.swift */,
+				50738648268DA397004092A9 /* NowSnapshotViewModel.swift */,
 			);
 			path = "Snapshot Detail";
 			sourceTree = "<group>";
@@ -301,6 +304,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50D6F2FE2694856A00A50976 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				50738653268DB19B004092A9 /* NowSnapshot.swift */,
+				50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -489,6 +501,7 @@
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
 				50D6F2F9269482B400A50976 /* Array+extensions.swift in Sources */,
 				50D6F2F026947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
+				50D6F2FC2694855700A50976 /* UpdatedAtFormatter.swift in Sources */,
 				50544D082691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D32269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
 				50D6F2F626947FCD00A50976 /* Dispatcher.swift in Sources */,
@@ -525,6 +538,7 @@
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
 				50D6F2FA269482B400A50976 /* Array+extensions.swift in Sources */,
 				50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
+				50D6F2FD2694855700A50976 /* UpdatedAtFormatter.swift in Sources */,
 				50544D092691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D33269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
 				50D6F2F726947FCD00A50976 /* Dispatcher.swift in Sources */,

@@ -33,6 +33,7 @@ class NowPageURLValidator: ObservableObject {
 }
 
 extension URL {
+    /// Code adapted from <https://stackoverflow.com/questions/57982334/url-verification-publisher>
     /// - Returns: Promise of the URL result.
     static func reachableURL(string: String, networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never> {
         guard let url = URL(string: string)

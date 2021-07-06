@@ -13,18 +13,10 @@ struct NowSnapshotViewModel: Identifiable, Equatable {
 }
 
 extension NowSnapshotViewModel {
-    // TODO: Reuse same formatter as NowExcerptViewModel.dateFormatter
-    static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        dateFormatter.dateStyle = .short
-        return dateFormatter
-    }()
-
     init(fromSnapshot snapshot: NowSnapshot) {
         self.init(id: snapshot.id,
                   title: snapshot.title,
-                  updatedAt: NowExcerptViewModel.dateFormatter.string(from: snapshot.updatedAt),
+                  updatedAt: UpdatedAtFormatter.string(from: snapshot),
                   content: snapshot.content,
                   // TODO: Use real icon
                   icon: .nowPlaceholderIcon)

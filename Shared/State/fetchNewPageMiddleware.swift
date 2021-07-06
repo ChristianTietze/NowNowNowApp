@@ -68,9 +68,9 @@ extension NowSnapshot {
             ?? fallbackDateFormatters.lazy.compactMap { $0.date(from: string) }.first
     }
 
-    init(fromHTMLDocument html: Kanna.HTMLDocument, url: URL) {
+    init(fromHTMLDocument html: Kanna.HTMLDocument, url: URL, now: Date = Date()) {
         let content: String
-        let updatedAt: Date
+        let updatedAt: NowSnapshot.UpdatedAt
 
         if let hNowElement = html.xpath("//*[contains(@class,'h-now')]", namespaces: nil).first {
             // The h-now microformat expects content to be in any HTML tag with the `.e-content` class, but we should fallback to the whole element text if that's not found.
@@ -79,8 +79,13 @@ extension NowSnapshot {
                 ?? "(h-now microformat specified but no content found)"
 
             // The microformat also expects the update timestamp to be in a `datetime` attribute inside a HTML tag with the class `.dt-published`.
-            let updatedAtString = hNowElement.xpath(".//*[contains(@class,'dt-published')]/@datetime", namespaces: nil).first?.text ?? "No"
-            updatedAt = NowSnapshot.date(from: updatedAtString) ?? Date()
+            if let updatedAtString = hNowElement.xpath(".//*[contains(@class,'dt-published')]/@datetime", namespaces: nil).first?.text,
+               let modificationDate = NowSnapshot.date(from: updatedAtString) {
+                updatedAt = .modifiedAt(modificationDate)
+            } else {
+                // TODO: Extract dates from string like "Last Update: May 30th, 2020".
+                updatedAt = .fetchedAt(now)
+            }
         } else {
             // Fallback to often used content tags
             let contentElement: Kanna.XMLElement? =
@@ -89,7 +94,7 @@ extension NowSnapshot {
                 ?? html.css("article", namespaces: nil).first
             content = contentElement?.content ?? "(Finding the body content on the page failed)"
             // TODO: Try to fetch modification date via <head>/<meta> tags?
-            updatedAt = Date()
+            updatedAt = .fetchedAt(now)
         }
 
         self.init(id: UUID(),

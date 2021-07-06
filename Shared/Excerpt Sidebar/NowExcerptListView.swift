@@ -102,8 +102,8 @@ struct NowExcerptListView_Previews: PreviewProvider {
     static var previews: some View {
         NowExcerptListView(
             store: AppStore(state: .init(nowSnapshots: [
-                NowSnapshot(id: UUID(), title: "Test", url: URL(string: "irrelevant")!, updatedAt: Date(), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
-                NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "irrelevant")!, updatedAt: Date(), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+                NowSnapshot(id: UUID(), title: "Test", url: URL(string: "irrelevant")!, updatedAt: .fetchedAt(Date()), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+                NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "irrelevant")!, updatedAt: .modifiedAt(Date()), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
             ])))
     }
 }

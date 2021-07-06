@@ -20,19 +20,15 @@ extension NowExcerptViewModel: Hashable {
 }
 
 extension NowExcerptViewModel {
-    static let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        dateFormatter.dateStyle = .short
-        return dateFormatter
-    }()
-
     init(fromSnapshot snapshot: NowSnapshot) {
         self.init(
             id: snapshot.id,
             title: snapshot.title,
-            updatedAt: NowExcerptViewModel.dateFormatter.string(from: snapshot.updatedAt),
-            excerpt: String(snapshot.content.prefix(200)),
+            updatedAt: UpdatedAtFormatter.string(from: snapshot),
+            excerpt: String(snapshot.content
+                                .replacingOccurrences(of: "\n", with: " ")
+                                .trimmingCharacters(in: .whitespacesAndNewlines)
+                                .prefix(200)),
             // TODO: Use real icon
             icon: .nowPlaceholderIcon)
     }
