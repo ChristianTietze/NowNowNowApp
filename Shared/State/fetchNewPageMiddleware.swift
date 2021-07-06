@@ -2,6 +2,7 @@
 
 import ReSwift
 import Foundation
+import Kanna
 
 /// Attempts to produce new `NowSnapshot` from `URL`
 let fetchNewPageMiddleware: Middleware<AppState> = { dispatch, getState in
@@ -14,34 +15,29 @@ let fetchNewPageMiddleware: Middleware<AppState> = { dispatch, getState in
             func handleServerError(_ response: URLResponse?) {}
             func handleContentError(_ response: URLResponse?, _ data: Data?) {}
 
-            URLSession.shared
-                .dataTask(with: requestURL) { data, response, error in
-                    if let error = error {
-                        return handleClientError(error)
-                    }
+            let result = Result {
+                try Kanna.HTML(url: requestURL, encoding: .utf8)
+            }.map { NowSnapshot(fromHTMLDocument: $0, url: requestURL) }
 
-                    guard let httpResponse = response as? HTTPURLResponse,
-                          (200...299).contains(httpResponse.statusCode)
-                    else { return handleServerError(response) }
+            switch result {
+            case .failure(let error):
+                break
 
-                    // TODO: Support non-UTF-8 encoded URL response data
-                    guard let string = data.flatMap({ String(data: $0, encoding: .utf8) })
-                    else { return handleContentError(response, data) }
-
-                    let pageTitle = "Stub title"
-                    let pageContent = string
-
-                    let snapshot = NowSnapshot(
-                        id: UUID(),
-                        title: pageTitle,
-                        url: httpResponse.url?.absoluteURL ?? requestURL,
-                        updatedAt: Date(),
-                        content: pageContent)
-
-                    DispatchQueue.main.async {
-                        next(AddNowPage.result(.success(snapshot)))
-                    }
-                }.resume()
+            case .success(let snapshot):
+                DispatchQueue.main.async {
+                    next(AddNowPage.result(.success(snapshot)))
+                }
+            }
         }
+    }
+}
+
+extension NowSnapshot {
+    init(fromHTMLDocument html: Kanna.HTMLDocument, url: URL) {
+        self.init(id: UUID(),
+                  title: html.title ?? url.absoluteString,
+                  url: url,
+                  updatedAt: Date(),
+                  content: html.content ?? "(Loading page failed)")
     }
 }
