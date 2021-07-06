@@ -18,3 +18,22 @@ extension NowExcerptViewModel: Hashable {
         hasher.combine(id)
     }
 }
+
+extension NowExcerptViewModel {
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        dateFormatter.dateStyle = .short
+        return dateFormatter
+    }()
+
+    init(fromSnapshot snapshot: NowSnapshot) {
+        self.init(
+            id: snapshot.id,
+            title: snapshot.title,
+            updatedAt: NowExcerptViewModel.dateFormatter.string(from: snapshot.updatedAt),
+            excerpt: String(snapshot.content.prefix(200)),
+            icon: .nowPlaceholderIcon)
+    }
+}
+

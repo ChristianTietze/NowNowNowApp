@@ -4,20 +4,19 @@ import SwiftUI
 
 @main
 struct NowNowNowApp: App {
-    @StateObject var store = AppStore()
+    private let store = AppStore()
+
     @AppStorage("fontSize") var fontSize: Double = FontSizeKey.initialValue
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                NowExcerptListView(viewModel: store.connect(using: Connectors.ExcerptList()),
-                                   selectedExcerpt: nil)
-                NoSelectionView()
+                NowExcerptListView(store: store)
+                NoSelectionView(store: store)
             }
             .environment(\.fontSize, $fontSize)
-            .environmentObject(store)
             .onAppear {
-                store.send(.replaceSnapshots(snapshotsFixture()))
+                store.dispatch(.replaceSnapshots(snapshotsFixture()))
             }
         }
         // Font +/- menu items for macOS; irrelevant on iOS due to dynamic type.

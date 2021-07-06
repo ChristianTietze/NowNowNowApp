@@ -1,36 +1,43 @@
 //  Copyright © 2021 Christian Tietze. All rights reserved. Distributed under the MIT License.
  
 import SwiftUI
+import ReSwift
 
-struct NowExcerptListView: View {
-    struct State: Equatable {
-        let excerpts: [NowExcerptViewModel]
-    }
+protocol HasNowSnapshots {
+    var nowSnapshots: [NowSnapshot] { get }
+}
 
-    enum Action: Equatable {
-        case delete(NowExcerptViewModel.ID)
-    }
+extension AppState: HasNowSnapshots {}
 
-    typealias ViewModel = Store<State, Action>
+struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: HasNowSnapshots {
+    private let store: Store
 
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject private var excerpts: Subscriber<[NowExcerptViewModel]>
 
     @SwiftUI.State var selectedExcerpt: NowExcerptViewModel? = nil
     @SwiftUI.State var isDeletionAlertShown = false
+
+    init(store: Store) {
+        self.store = store
+        self.excerpts = Subscriber(store) { $0.select {
+            $0.nowSnapshots.map(NowExcerptViewModel.init(fromSnapshot:))
+        } }
+    }
 
     var body: some View {
         listView
             .navigationTitle("All /now Pages")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    AddSubscriptionButton(labelStyle: .iconOnly)
+                    AddSubscriptionButton(store: store,
+                                          labelStyle: .iconOnly)
                 }
             }
     }
 
     private var listView: some View {
         List {
-            ForEach(viewModel.state.excerpts, id: \.id) { excerpt in
+            ForEach(excerpts.value, id: \.id) { excerpt in
                 NavigationLink(
                     destination: NowSnapshotView(snapshot: NowSnapshotViewModel(id: excerpt.id, title: excerpt.title, updatedAt: excerpt.updatedAt, content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", icon: excerpt.icon)),
                     tag: excerpt,
@@ -42,8 +49,8 @@ struct NowExcerptListView: View {
             .onDelete { indexSet in
                 // Delete selected items on iOS right away
                 indexSet
-                    .map { viewModel.state.excerpts[$0].id }
-                    .forEach { viewModel.send(.delete($0)) }
+                    .map { excerpts.value[$0].id }
+                    .forEach { store.dispatch(AppAction.deleteSnapshot($0)) }
             }
         }
         .frame(minWidth: 200, alignment: .topLeading)
@@ -55,7 +62,7 @@ struct NowExcerptListView: View {
     private var deletionAlert: Alert {
         let deletionButton = Alert.Button.destructive(Text("Delete"), action: {
             guard let selectedExcerpt = selectedExcerpt else { return }
-            viewModel.send(.delete(selectedExcerpt.id))
+            store.dispatch(AppAction.deleteSnapshot(selectedExcerpt.id))
         })
         return Alert(title: Text("Delete /now Page?"),
               message: Text("Do you really want to delete this subscription?"),
@@ -97,10 +104,9 @@ extension View {
 struct NowExcerptListView_Previews: PreviewProvider {
     static var previews: some View {
         NowExcerptListView(
-            viewModel: .stub(with: .init(excerpts: [
-                NowExcerptViewModel(id: UUID(), title: "Test", updatedAt: "2021-06-18", excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.", icon: .nowPlaceholderIcon),
-                NowExcerptViewModel(id: UUID(), title: "Test 2", updatedAt: "2021-06-19", excerpt: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", icon: .nowPlaceholderIcon)
-            ])),
-            selectedExcerpt: nil)
+            store: AppStore(state: .init(nowSnapshots: [
+                NowSnapshot(id: UUID(), title: "Test", url: URL(string: "irrelevant")!, updatedAt: Date(), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
+                NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "irrelevant")!, updatedAt: Date(), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
+            ])))
     }
 }

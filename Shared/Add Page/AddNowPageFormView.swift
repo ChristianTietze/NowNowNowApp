@@ -1,19 +1,20 @@
 //  Copyright © 2021 Christian Tietze. All rights reserved. Distributed under the MIT License.
 
 import SwiftUI
+import ReSwift
 
-struct AddNowPageFormView: View {
-    enum Action: Equatable {
-        case add(url: URL)
-    }
-    
-    typealias ViewModel = Store<Empty, Action>
-    @ObservedObject var viewModel: ViewModel
+struct AddNowPageFormView<Store: ReSwift.StoreType>: View {
+    private let store: Store
 
     @StateObject var urlValidator = NowPageURLValidator()
     @Binding var showSheetView: Bool
 
     let sheetTitle = "New Subscription"
+
+    init(store: Store, showSheetView: Binding<Bool>) {
+        self.store = store
+        self._showSheetView = showSheetView
+    }
 
     var body: some View {
         formWrapper {
@@ -59,7 +60,7 @@ struct AddNowPageFormView: View {
     private var subscribeButton: some View {
         Button("Add") {
             guard let url = urlValidator.validURL else { return }
-            viewModel.send(.add(url: url))
+            store.dispatch(AppAction.addNowPage(url: url))
             dismiss()
         }
         .keyboardShortcut(.defaultAction)
@@ -75,7 +76,7 @@ struct NewSubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AddNowPageFormView(
-                viewModel: .stub(with: Empty()),
+                store: AppStore(),
                 showSheetView: .constant(true))
         }
     }
