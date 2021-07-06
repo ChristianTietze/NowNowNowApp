@@ -53,6 +53,10 @@
 		509DF6AB268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
 		509DF6B0268C814100090624 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* NewSubscriptionView.swift */; };
 		509DF6B1268C814100090624 /* NewSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* NewSubscriptionView.swift */; };
+		50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */; };
+		50D6F2CF269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */; };
+		50D6F2D12694371300A50976 /* URLStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2D02694371300A50976 /* URLStatusView.swift */; };
+		50D6F2D22694371300A50976 /* URLStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2D02694371300A50976 /* URLStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,8 @@
 		509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+nowPlaceholderIcon.swift"; sourceTree = "<group>"; };
 		509DF6A9268C53D700090624 /* NowExcerptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptView.swift; sourceTree = "<group>"; };
 		509DF6AF268C814100090624 /* NewSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubscriptionView.swift; sourceTree = "<group>"; };
+		50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningLoadingCircleView.swift; sourceTree = "<group>"; };
+		50D6F2D02694371300A50976 /* URLStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,8 @@
 				50738645268C9028004092A9 /* AddSubscriptionButton.swift */,
 				509DF6AF268C814100090624 /* NewSubscriptionView.swift */,
 				50544D34269309F800F704D7 /* NowPageURLView.swift */,
+				50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */,
+				50D6F2D02694371300A50976 /* URLStatusView.swift */,
 				50544D31269309AA00F704D7 /* NowPageURLValidator.swift */,
 				50544D3726930A9900F704D7 /* LoadingIndicatorView.swift */,
 			);
@@ -423,6 +431,7 @@
 				509DF6B0268C814100090624 /* NewSubscriptionView.swift in Sources */,
 				50544D1126921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
+				50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
 				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
@@ -431,6 +440,7 @@
 				5065643826907FC500076639 /* ExcerptListConnector.swift in Sources */,
 				50544D3826930A9900F704D7 /* LoadingIndicatorView.swift in Sources */,
 				506564312690716A00076639 /* Store.swift in Sources */,
+				50D6F2D12694371300A50976 /* URLStatusView.swift in Sources */,
 				503B990E267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 				50656434269074B100076639 /* Store+App.swift in Sources */,
 				50738649268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */,
@@ -452,6 +462,7 @@
 				509DF6B1268C814100090624 /* NewSubscriptionView.swift in Sources */,
 				50544D1226921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
+				50D6F2CF269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
 				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
@@ -460,6 +471,7 @@
 				5065643926907FC500076639 /* ExcerptListConnector.swift in Sources */,
 				50544D3926930A9900F704D7 /* LoadingIndicatorView.swift in Sources */,
 				506564322690716A00076639 /* Store.swift in Sources */,
+				50D6F2D22694371300A50976 /* URLStatusView.swift in Sources */,
 				503B990F267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 				50656435269074B100076639 /* Store+App.swift in Sources */,
 				5073864A268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */,

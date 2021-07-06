@@ -11,7 +11,7 @@ struct NowPageURLView: View {
 
     private var urlTextField: some View {
         VStack(alignment: .leading, spacing: 20) {
-            HStack {
+            HStack(alignment: .center) {
                 #if os(macOS)
                 // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
                 Text("URL:")
@@ -20,9 +20,9 @@ struct NowPageURLView: View {
                 TextField("URL, e.g. sivers.org/now", text: $urlValidator.text)
                     .unfilteredInput()
                     .frame(minWidth: 250)
-            }
 
-            LoadingIndicatorView(isLoading: $urlValidator.isPerformingNetworkActivity)
+                URLStatusView(urlValidator: urlValidator)
+            }
         }
     }
 }
