@@ -21,14 +21,17 @@ func appReducer(action: ReSwift.Action, state: AppState?) -> AppState {
 
 func nowSnapshotsReducer(action: ReSwift.Action, state: [NowSnapshot]?) -> [NowSnapshot] {
     switch action {
+    case let action as ReplaceSnapshots:
+        return action.snapshots
+
     case let action as DeleteNowPage:
         var state = state ?? []
         state.removeAll(where: { $0.id == action.id })
         return state
-    case let action as ReplaceSnapshots:
-        return action.snapshots
-    case let action as AddNowPage:
-        return state ?? []
+    case let action as AddNowSnapshot:
+        var state = state ?? []
+        state.append(action.snapshot)
+        return state
     default:
         return state ?? []
     }

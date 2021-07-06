@@ -7,6 +7,10 @@ struct AddNowPage: ReSwift.Action {
     let url: URL
 }
 
+struct AddNowSnapshot: ReSwift.Action {
+    let snapshot: NowSnapshot
+}
+
 struct DeleteNowPage: ReSwift.Action {
     let id: NowSnapshot.ID
 }
