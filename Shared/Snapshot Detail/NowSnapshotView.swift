@@ -16,14 +16,14 @@ struct NowSnapshotView: View {
         #else
         // Use custom font size on macOS. Users can increase/decrease the font size via `Command`s because
         // the default body size is a bit small to comfortable *read* a text.
-        Font.system(size: fontSize.wrappedValue, weight: .regular, design: .default)
+        Font.system(size: fontSize.wrappedCGFloat, weight: .regular, design: .default)
             .leading(.loose)
         #endif
     }
 
     /// Rough estimate of a readable max width based on the font size.
     /// (Would use `font`'s em-width, but apparently that's not accessible.)
-    var maxTextWidth: CGFloat { max(fontSize.wrappedValue * 50, minTextWidth.wrappedValue) }
+    var maxTextWidth: CGFloat { max(fontSize.wrappedCGFloat * 50, minTextWidth.wrappedCGFloat) }
 
     var body: some View {
         GeometryReader { geometry in
@@ -57,14 +57,14 @@ struct NowSnapshotView: View {
                 }
                 .titled(snapshot.title)
                 // Center the text in a column on large devices
-                .frame(minWidth: minTextWidth.wrappedValue, maxWidth: maxTextWidth, alignment: .leading)
+                .frame(minWidth: minTextWidth.wrappedCGFloat, maxWidth: maxTextWidth, alignment: .leading)
             }
             // Use the whole width of the detail pane and color it uniformly.
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .modifier(MacOSTextBackgroundColor())
         }
         // Repeat the minWidth for the GeometryReader container so it pushes the window's minimum width.
-        .frame(minWidth: minTextWidth.wrappedValue, minHeight: minWindowHeight.wrappedValue)
+        .frame(minWidth: minTextWidth.wrappedCGFloat, minHeight: minWindowHeight.wrappedCGFloat)
     }
 
     struct MacOSTextBackgroundColor: ViewModifier {

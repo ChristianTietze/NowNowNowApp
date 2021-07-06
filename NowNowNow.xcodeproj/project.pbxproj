@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500A6C4126948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */; };
+		500A6C4226948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */; };
 		503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
 		503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
 		503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D1267D30A2006F752F /* NowExcerptListView.swift */; };
@@ -93,6 +95,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+wrappedCGFloat.swift"; sourceTree = "<group>"; };
 		503B98D0267D30A2006F752F /* NowNowNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowNowNowApp.swift; sourceTree = "<group>"; };
 		503B98D1267D30A2006F752F /* NowExcerptListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptListView.swift; sourceTree = "<group>"; };
 		503B98D2267D30A4006F752F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+nowPlaceholderIcon.swift"; sourceTree = "<group>"; };
 		509DF6A9268C53D700090624 /* NowExcerptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptView.swift; sourceTree = "<group>"; };
 		509DF6AF268C814100090624 /* AddNowPageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNowPageFormView.swift; sourceTree = "<group>"; };
+		50ACB65226948A8900CDDDD6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningLoadingCircleView.swift; sourceTree = "<group>"; };
 		50D6F2D02694371300A50976 /* URLStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.swift; sourceTree = "<group>"; };
 		50D6F2DE26945D3F00A50976 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 				50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */,
 				50544D2E269308E900F704D7 /* TextField+unfilteredInput.swift */,
 				50D6F2F8269482B400A50976 /* Array+extensions.swift */,
+				500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */,
 				503B98D2267D30A4006F752F /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -302,6 +307,7 @@
 		50D6F2DB2694537200A50976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50ACB65226948A8900CDDDD6 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
+				500A6C4126948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */,
 				50D6F2F9269482B400A50976 /* Array+extensions.swift in Sources */,
 				50D6F2F026947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50D6F2FC2694855700A50976 /* UpdatedAtFormatter.swift in Sources */,
@@ -536,6 +543,7 @@
 				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
+				500A6C4226948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */,
 				50D6F2FA269482B400A50976 /* Array+extensions.swift in Sources */,
 				50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50D6F2FD2694855700A50976 /* UpdatedAtFormatter.swift in Sources */,

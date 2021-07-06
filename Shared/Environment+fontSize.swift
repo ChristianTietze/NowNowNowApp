@@ -4,9 +4,9 @@ import SwiftUI
 
 struct FontSizeKey: EnvironmentKey {
     #if !os(macOS)
-    static var initialValue: Double = UIFont.preferredFont(forTextStyle: .body).pointSize
+    static var initialValue: Double = Double(UIFont.preferredFont(forTextStyle: .body).pointSize)
     #else
-    static var initialValue: Double = NSFont.systemFontSize
+    static var initialValue: Double = Double(NSFont.systemFontSize)
     #endif
 
     static var defaultValue: Binding<Double> = Binding.constant(initialValue)

@@ -15,7 +15,7 @@ struct NoSelectionView: View {
             } else {
                 firstLaunchView
             }
-        }.frame(minWidth: minDetailWidth.wrappedValue, minHeight: minWindowHeight.wrappedValue)
+        }.frame(minWidth: CGFloat(minDetailWidth.wrappedValue), minHeight: CGFloat(minWindowHeight.wrappedValue))
     }
 
     private var selectPlaceholderView: some View {
