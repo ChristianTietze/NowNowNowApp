@@ -19,9 +19,15 @@ struct NowExcerptView: View {
                         .lineLimit(5)
                         .padding(.bottom)
                     if #available(iOS 15.0, *) {
+                        #if swift(>=5.5)
+                        // Coincides with Xcode 13 and new SDKs
                         Text(excerpt.updatedAt)
                             .dynamicTypeSize(.small)
                             .foregroundColor(.secondary)
+                        #else
+                        Text(excerpt.updatedAt)
+                            .foregroundColor(.secondary)
+                        #endif
                     } else {
                         Text(excerpt.updatedAt)
                             .foregroundColor(.secondary)

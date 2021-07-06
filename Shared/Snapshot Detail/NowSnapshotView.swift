@@ -96,7 +96,12 @@ extension View {
         return AnyView(self.controlSize(.small))
         #elseif os(iOS)
         if #available(iOS 15.0, *) {
+            #if swift(>=5.5)
+            // Coincides with Xcode 13 and new SDKs
             return AnyView(self.controlSize(.small))
+            #else
+            return AnyView(self)
+            #endif
         } else {
             return AnyView(self)
         }
@@ -109,13 +114,23 @@ extension View {
         // TODO: Drop the `AnyView` in favor of `some View` once the conditions can be removed.
         #if !os(macOS)
         if #available(iOS 15.0, *) {
+            #if swift(>=5.5)
+            // Coincides with Xcode 13 and new SDKs
             return AnyView(self.textSelection(.enabled))
+            #else
+            return AnyView(self)
+            #endif
         } else {
             return AnyView(self)
         }
         #else
         if #available(macOS 12.0, *) {
+            #if swift(>=5.5)
+            // Coincides with Xcode 13 and new SDKs
             return AnyView(self.textSelection(.enabled))
+            #else
+            return AnyView(self)
+            #endif
         } else {
             return AnyView(self)
         }

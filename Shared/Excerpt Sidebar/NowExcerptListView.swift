@@ -27,7 +27,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
             .navigationTitle("All /now Pages")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    AddSubscriptionButton(labelStyle: .iconOnly)
+                    AddSubscriptionButton(labelStyle: IconOnlyLabelStyle())
                 }
             }
     }
@@ -73,11 +73,11 @@ struct UniversalSidebarStyleModifier: ViewModifier {
         #if !os(macOS)
         // .sidebar would be inappropriate because we're displaying larger content cells, like
         // mails in Mail.app, and unlike mailboxes/accounts.
-        content.listStyle(.inset)
+        content.listStyle(InsetListStyle())
         #else
         // On macOS, we display only the /now page subscriptions, so a Sidebar is a better fit.
         // Also, .inset as the leftmost split doesn't paint the window title bar correctly.
-        content.listStyle(.sidebar)
+        content.listStyle(SidebarListStyle())
         #endif
     }
 }

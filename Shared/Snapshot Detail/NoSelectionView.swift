@@ -26,7 +26,7 @@ struct NoSelectionView: View {
         VStack(alignment: .center, spacing: 10) {
             Text("Add a /now page to your collection and show the latest update")
 
-            AddSubscriptionButton(labelStyle: .titleOnly)
+            AddSubscriptionButton(labelStyle: TitleOnlyLabelStyle())
         }
     }
 }
