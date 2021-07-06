@@ -3,12 +3,9 @@
 import Foundation
 import ReSwift
 
-struct AddNowPage: ReSwift.Action {
-    let url: URL
-}
-
-struct AddNowSnapshot: ReSwift.Action {
-    let snapshot: NowSnapshot
+enum AddNowPage: ReSwift.Action {
+    case request(url: URL)
+    case result(Result<NowSnapshot, Error>)
 }
 
 struct DeleteNowPage: ReSwift.Action {

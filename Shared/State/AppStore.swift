@@ -28,9 +28,9 @@ func nowSnapshotsReducer(action: ReSwift.Action, state: [NowSnapshot]?) -> [NowS
         var state = state ?? []
         state.removeAll(where: { $0.id == action.id })
         return state
-    case let action as AddNowSnapshot:
+    case .result(.success(let snapshot)) as AddNowPage:
         var state = state ?? []
-        state.append(action.snapshot)
+        state.append(snapshot)
         return state
     default:
         return state ?? []

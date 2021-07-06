@@ -60,7 +60,7 @@ struct AddNowPageFormView<Store: ReSwift.StoreType>: View {
     private var subscribeButton: some View {
         Button("Add") {
             guard let url = urlValidator.validURL else { return }
-            store.dispatch(AddNowPage(url: url))
+            store.dispatch(AddNowPage.request(url: url))
             dismiss()
         }
         .keyboardShortcut(.defaultAction)
