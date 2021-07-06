@@ -12,13 +12,6 @@ struct NowExcerptViewModel: Identifiable, Equatable {
     let icon: Image
 }
 
-// Hashability is needed for e.g. NavigationLink.tag
-extension NowExcerptViewModel: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
 extension NowExcerptViewModel {
     init(fromSnapshot snapshot: NowSnapshot) {
         self.init(
