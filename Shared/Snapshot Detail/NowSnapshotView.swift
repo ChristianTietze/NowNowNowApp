@@ -28,7 +28,7 @@ struct NowSnapshotView: View {
     var body: some View {
         GeometryReader { geometry in
             Group {
-                VStack {
+                VStack(alignment: .leading, spacing: 0) {
                     VStack {
                         HStack(alignment: .top, spacing: 10) {
                             Text(snapshot.title)
@@ -44,7 +44,7 @@ struct NowSnapshotView: View {
                             Spacer()
                         }
                     }
-                    .padding([.horizontal, .top])
+                    .padding()
 
                     Divider()
 
