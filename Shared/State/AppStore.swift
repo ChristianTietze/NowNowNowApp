@@ -9,7 +9,9 @@ extension AppStore {
     convenience init(state: AppState = AppState()) {
         self.init(reducer: appReducer(action:state:),
                   state: state,
-                  middleware: [],
+                  middleware: [
+                    fetchNewPageMiddleware
+                  ],
                   automaticallySkipsRepeats: true)
     }
 }
