@@ -61,6 +61,8 @@
 		50D6F2E626945E6000A50976 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E426945E6000A50976 /* Actions.swift */; };
 		50D6F2E826945F2300A50976 /* fetchNewPageMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */; };
 		50D6F2E926945F2300A50976 /* fetchNewPageMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */; };
+		50D6F2EC2694667B00A50976 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6F2EB2694667B00A50976 /* Kanna */; };
+		50D6F2EE2694668100A50976 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6F2ED2694668100A50976 /* Kanna */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D6F2EC2694667B00A50976 /* Kanna in Frameworks */,
 				50D6F2DA2694535F00A50976 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D6F2EE2694668100A50976 /* Kanna in Frameworks */,
 				50D6F2DD2694537200A50976 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +305,7 @@
 			name = "NowNowNow (iOS)";
 			packageProductDependencies = (
 				50D6F2D92694535F00A50976 /* ReSwift */,
+				50D6F2EB2694667B00A50976 /* Kanna */,
 			);
 			productName = "NowNowNow (iOS)";
 			productReference = 503B98D7267D30A4006F752F /* NowNowNow.app */;
@@ -321,6 +326,7 @@
 			name = "NowNowNow (macOS)";
 			packageProductDependencies = (
 				50D6F2DC2694537200A50976 /* ReSwift */,
+				50D6F2ED2694668100A50976 /* Kanna */,
 			);
 			productName = "NowNowNow (macOS)";
 			productReference = 503B98DF267D30A4006F752F /* NowNowNow.app */;
@@ -398,6 +404,7 @@
 			mainGroup = 503B98CA267D30A2006F752F;
 			packageReferences = (
 				50D6F2D82694535F00A50976 /* XCRemoteSwiftPackageReference "ReSwift" */,
+				50D6F2EA2694667B00A50976 /* XCRemoteSwiftPackageReference "Kanna" */,
 			);
 			productRefGroup = 503B98D8267D30A4006F752F /* Products */;
 			projectDirPath = "";
@@ -891,6 +898,14 @@
 				kind = branch;
 			};
 		};
+		50D6F2EA2694667B00A50976 /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -903,6 +918,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 50D6F2D82694535F00A50976 /* XCRemoteSwiftPackageReference "ReSwift" */;
 			productName = ReSwift;
+		};
+		50D6F2EB2694667B00A50976 /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D6F2EA2694667B00A50976 /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		50D6F2ED2694668100A50976 /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50D6F2EA2694667B00A50976 /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
