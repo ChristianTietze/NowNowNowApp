@@ -15,44 +15,72 @@ struct NowSnapshotView: View {
         // Use custom font size on macOS. Users can increase/decrease the font size via `Command`s because
         // the default body size is a bit small to comfortable *read* a text.
         Font.system(size: fontSize.wrappedValue, weight: .regular, design: .default)
+            .leading(.loose)
         #endif
     }
 
-    var minTextWidth: CGFloat { 200 }
+    var minTextWidth: CGFloat {
+        #if !os(macOS)
+        200
+        #else
+        400
+        #endif
+    }
 
     /// Rough estimate of a readable max width based on the font size.
     /// (Would use `font`'s em-width, but apparently that's not accessible.)
     var maxTextWidth: CGFloat { max(fontSize.wrappedValue * 50, minTextWidth) }
 
     var body: some View {
-        ScrollView {
+        GeometryReader { geometry in
             VStack {
-                HStack(alignment: .top, spacing: 10) {
-                    Text(snapshot.title)
-                        .font(.title)
-                    Spacer()
-                    CircleImage(image: snapshot.icon, size: .regular)
-                }.padding(.horizontal)
+                VStack {
+                    VStack {
+                        HStack(alignment: .top, spacing: 10) {
+                            Text(snapshot.title)
+                                .font(.title)
+                            Spacer()
+                            CircleImage(image: snapshot.icon, size: .regular)
+                        }
 
-                HStack {
-                    Text(snapshot.updatedAt)
-                        .foregroundColor(.secondary)
-                        .__smallControlSize()
-                    Spacer()
-                }.padding(.horizontal)
+                        HStack {
+                            Text(snapshot.updatedAt)
+                                .foregroundColor(.secondary)
+                                .__smallControlSize()
+                            Spacer()
+                        }
+                    }
+                    .padding([.horizontal, .top])
 
-                Text(verbatim: snapshot.content)
-                    .font(font)
-                    .lineSpacing(4)
-                    .padding()  // Padding inside from text to bordered white box to the text
-                    .background(Color("TextBackgroundColor", bundle: nil))  // TODO: Replace with .init(nsColor:) after macOS 10.12
-                    .cornerRadius(4)
+                    Divider()
+
+                    ScrollView {
+                        Text(verbatim: snapshot.content)
+                            .font(font)
+                            .padding()
+                    }
+                    .__enableTextSelection_macOS12_iOS15()
+                }
+                .titled(snapshot.title)
+                .frame(minWidth: minTextWidth, maxWidth: maxTextWidth, alignment: .leading)
             }
-            .padding()
-            .__enableTextSelection_macOS12_iOS15()
+            // Use the whole width of the detail pane and color it uniformly.
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            .modifier(MacOSTextBackgroundColor())
         }
-        .titled(snapshot.title)
-        .frame(minWidth: minTextWidth, maxWidth: maxTextWidth, alignment: .leading)
+        // Repeat the minWidth for the GeometryReader container so it pushes the window's minimum width.
+        .frame(minWidth: minTextWidth)
+    }
+
+    struct MacOSTextBackgroundColor: ViewModifier {
+        func body(content: Content) -> some View {
+            #if !os(macOS)
+            content
+            #else
+            // TODO: Replace with .init(nsColor:) after bumping to macOS 10.12
+            content.background(Color("TextBackgroundColor", bundle: nil))
+            #endif
+        }
     }
 }
 
