@@ -3,24 +3,11 @@
 import SwiftUI
 import ReSwift
 
-protocol HasNowSnapshots {
-    var nowSnapshots: [NowSnapshot] { get }
-}
-
-extension AppState: HasNowSnapshots {}
-
-struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: HasNowSnapshots {
-    private let store: Store
-
-    @ObservedObject private var snapshots: Subscriber<[NowSnapshot]>
-
+struct NowExcerptListView: View {
+    @EnvironmentObject var dispatcher: Dispatcher
+    @ObservedObject var snapshots: Subscriber<[NowSnapshot]>
     @SwiftUI.State var selectedSnapshot: NowSnapshot? = nil
     @SwiftUI.State var isDeletionAlertShown = false
-
-    init(store: Store) {
-        self.store = store
-        self.snapshots = Subscriber(store) { $0.select(\.nowSnapshots) }
-    }
 
     var body: some View {
         listView
@@ -47,7 +34,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
                 // Delete selected items on iOS right away
                 indexSet
                     .map { snapshots.value[$0].id }
-                    .forEach { store.dispatch(DeleteNowPage(id: $0)) }
+                    .forEach { dispatcher.dispatch(DeleteNowPage(id: $0)) }
             }
         }
         .frame(minWidth: 200, alignment: .topLeading)
@@ -59,7 +46,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
     private var deletionAlert: Alert {
         let deletionButton = Alert.Button.destructive(Text("Delete"), action: {
             guard let selectedSnapshot = selectedSnapshot else { return }
-            store.dispatch(DeleteNowPage(id: selectedSnapshot.id))
+            dispatcher.dispatch(DeleteNowPage(id: selectedSnapshot.id))
         })
         return Alert(title: Text("Delete /now Page?"),
               message: Text("Do you really want to delete this subscription?"),
@@ -98,12 +85,14 @@ extension View {
     #endif
 }
 
+#if DEBUG
 struct NowExcerptListView_Previews: PreviewProvider {
     static var previews: some View {
         NowExcerptListView(
-            store: AppStore(state: .init(nowSnapshots: [
+            snapshots: .stub([
                 NowSnapshot(id: UUID(), title: "Test", url: URL(string: "irrelevant")!, updatedAt: .fetchedAt(Date()), content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."),
                 NowSnapshot(id: UUID(), title: "Test 2", url: URL(string: "irrelevant")!, updatedAt: .modifiedAt(Date()), content: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum")
-            ])))
+            ]))
     }
 }
+#endif

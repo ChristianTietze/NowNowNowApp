@@ -7,6 +7,10 @@ import ReSwift
 class Subscriber<Value>: ObservableObject, ReSwift.StoreSubscriber {
     @Published private(set) var value: Value!
 
+    private init(value: Value) {
+        self.value = value
+    }
+
     init<S: StoreType>(_ store: S, transform: @escaping (ReSwift.Subscription<S.State>) -> ReSwift.Subscription<Value>) {
         store.subscribe(self, transform: transform)
     }
@@ -19,3 +23,11 @@ class Subscriber<Value>: ObservableObject, ReSwift.StoreSubscriber {
         value = state
     }
 }
+
+#if DEBUG
+extension Subscriber {
+    static func stub(_ value: Value) -> Subscriber<Value> {
+        return Subscriber<Value>(value: value)
+    }
+}
+#endif

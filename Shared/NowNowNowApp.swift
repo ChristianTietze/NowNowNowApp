@@ -16,7 +16,7 @@ struct NowNowNowApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                NowExcerptListView(store: store)
+                NowExcerptListView(snapshots: Subscriber(store) { $0.select(\.nowSnapshots) })
                 NoSelectionView()
             }
             .environment(\.fontSize, $fontSize)
