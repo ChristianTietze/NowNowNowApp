@@ -5,6 +5,8 @@ import SwiftUI
 struct NowSnapshotView: View {
     let snapshot: NowSnapshotViewModel
 
+    @Environment(\.minDetailWidth) var minTextWidth: Binding<Double>
+    @Environment(\.minWindowHeight) var minWindowHeight: Binding<Double>
     @Environment(\.fontSize) private var fontSize: Binding<Double>
 
     var font: Font {
@@ -19,21 +21,13 @@ struct NowSnapshotView: View {
         #endif
     }
 
-    var minTextWidth: CGFloat {
-        #if !os(macOS)
-        200
-        #else
-        400
-        #endif
-    }
-
     /// Rough estimate of a readable max width based on the font size.
     /// (Would use `font`'s em-width, but apparently that's not accessible.)
-    var maxTextWidth: CGFloat { max(fontSize.wrappedValue * 50, minTextWidth) }
+    var maxTextWidth: CGFloat { max(fontSize.wrappedValue * 50, minTextWidth.wrappedValue) }
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            Group {
                 VStack {
                     VStack {
                         HStack(alignment: .top, spacing: 10) {
@@ -62,14 +56,15 @@ struct NowSnapshotView: View {
                     .__enableTextSelection_macOS12_iOS15()
                 }
                 .titled(snapshot.title)
-                .frame(minWidth: minTextWidth, maxWidth: maxTextWidth, alignment: .leading)
+                // Center the text in a column on large devices
+                .frame(minWidth: minTextWidth.wrappedValue, maxWidth: maxTextWidth, alignment: .leading)
             }
             // Use the whole width of the detail pane and color it uniformly.
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             .modifier(MacOSTextBackgroundColor())
         }
         // Repeat the minWidth for the GeometryReader container so it pushes the window's minimum width.
-        .frame(minWidth: minTextWidth)
+        .frame(minWidth: minTextWidth.wrappedValue, minHeight: minWindowHeight.wrappedValue)
     }
 
     struct MacOSTextBackgroundColor: ViewModifier {

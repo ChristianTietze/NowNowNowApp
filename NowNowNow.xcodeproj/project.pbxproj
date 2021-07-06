@@ -63,6 +63,10 @@
 		50D6F2E926945F2300A50976 /* fetchNewPageMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */; };
 		50D6F2EC2694667B00A50976 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6F2EB2694667B00A50976 /* Kanna */; };
 		50D6F2EE2694668100A50976 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6F2ED2694668100A50976 /* Kanna */; };
+		50D6F2F026947C5700A50976 /* Environment+minDetailWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */; };
+		50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */; };
+		50D6F2F326947C7400A50976 /* Environment+minWindowHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */; };
+		50D6F2F426947C7400A50976 /* Environment+minWindowHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +123,8 @@
 		50D6F2E126945E4500A50976 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
 		50D6F2E426945E6000A50976 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 		50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchNewPageMiddleware.swift; sourceTree = "<group>"; };
+		50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+minDetailWidth.swift"; sourceTree = "<group>"; };
+		50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+minWindowHeight.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,8 @@
 				509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */,
 				5065642D2690703B00076639 /* KeyPath+Comparable.swift */,
 				50544D072691CE5700F704D7 /* Environment+fontSize.swift */,
+				50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */,
+				50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */,
 				50544D2E269308E900F704D7 /* TextField+unfilteredInput.swift */,
 				503B98D2267D30A4006F752F /* Assets.xcassets */,
 			);
@@ -466,10 +474,12 @@
 				50544D1126921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
+				50D6F2F326947C7400A50976 /* Environment+minWindowHeight.swift in Sources */,
 				50D6F2E526945E6000A50976 /* Actions.swift in Sources */,
 				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
+				50D6F2F026947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50544D082691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D32269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
 				50D6F2D12694371300A50976 /* URLStatusView.swift in Sources */,
@@ -498,10 +508,12 @@
 				50544D1226921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				50D6F2CF269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
+				50D6F2F426947C7400A50976 /* Environment+minWindowHeight.swift in Sources */,
 				50D6F2E626945E6000A50976 /* Actions.swift in Sources */,
 				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
+				50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50544D092691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D33269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
 				50D6F2D22694371300A50976 /* URLStatusView.swift in Sources */,

@@ -8,16 +8,21 @@ struct NoSelectionView<Store: ReSwift.StoreType>: View {
 
     var nowSnapshotsExist = false
 
+    @Environment(\.minDetailWidth) var minDetailWidth: Binding<Double>
+    @Environment(\.minWindowHeight) var minWindowHeight: Binding<Double>
+
     init(store: Store) {
         self.store = store
     }
 
     var body: some View {
-        if nowSnapshotsExist {
-            selectPlaceholderView
-        } else {
-            firstLaunchView
-        }
+        Group {
+            if nowSnapshotsExist {
+                selectPlaceholderView
+            } else {
+                firstLaunchView
+            }
+        }.frame(minWidth: minDetailWidth.wrappedValue, minHeight: minWindowHeight.wrappedValue)
     }
 
     private var selectPlaceholderView: some View {
