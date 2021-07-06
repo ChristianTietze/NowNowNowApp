@@ -67,6 +67,8 @@
 		50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */; };
 		50D6F2F326947C7400A50976 /* Environment+minWindowHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */; };
 		50D6F2F426947C7400A50976 /* Environment+minWindowHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */; };
+		50D6F2F626947FCD00A50976 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F526947FCD00A50976 /* Dispatcher.swift */; };
+		50D6F2F726947FCD00A50976 /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F526947FCD00A50976 /* Dispatcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,7 @@
 		50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fetchNewPageMiddleware.swift; sourceTree = "<group>"; };
 		50D6F2EF26947C5700A50976 /* Environment+minDetailWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+minDetailWidth.swift"; sourceTree = "<group>"; };
 		50D6F2F226947C7400A50976 /* Environment+minWindowHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+minWindowHeight.swift"; sourceTree = "<group>"; };
+		50D6F2F526947FCD00A50976 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +264,7 @@
 				50656433269074B100076639 /* AppStore.swift */,
 				50D6F2E426945E6000A50976 /* Actions.swift */,
 				50D6F2E126945E4500A50976 /* Subscriber.swift */,
+				50D6F2F526947FCD00A50976 /* Dispatcher.swift */,
 				50D6F2DE26945D3F00A50976 /* AppState.swift */,
 				50738653268DB19B004092A9 /* NowSnapshot.swift */,
 				50D6F2E726945F2300A50976 /* fetchNewPageMiddleware.swift */,
@@ -482,6 +486,7 @@
 				50D6F2F026947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50544D082691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D32269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
+				50D6F2F626947FCD00A50976 /* Dispatcher.swift in Sources */,
 				50D6F2D12694371300A50976 /* URLStatusView.swift in Sources */,
 				503B990E267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 				50656434269074B100076639 /* AppStore.swift in Sources */,
@@ -516,6 +521,7 @@
 				50D6F2F126947C5700A50976 /* Environment+minDetailWidth.swift in Sources */,
 				50544D092691CE5700F704D7 /* Environment+fontSize.swift in Sources */,
 				50544D33269309AA00F704D7 /* NowPageURLValidator.swift in Sources */,
+				50D6F2F726947FCD00A50976 /* Dispatcher.swift in Sources */,
 				50D6F2D22694371300A50976 /* URLStatusView.swift in Sources */,
 				503B990F267DDF1E006F752F /* NowExcerptViewModel.swift in Sources */,
 				50656435269074B100076639 /* AppStore.swift in Sources */,

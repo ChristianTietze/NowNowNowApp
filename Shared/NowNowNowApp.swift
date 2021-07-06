@@ -5,16 +5,22 @@ import SwiftUI
 @main
 struct NowNowNowApp: App {
     private let store = AppStore()
+    private let dispatcher: Dispatcher
 
     @AppStorage("fontSize") var fontSize: Double = FontSizeKey.initialValue
+
+    init() {
+        self.dispatcher = Dispatcher(store: store)
+    }
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 NowExcerptListView(store: store)
-                NoSelectionView(store: store)
+                NoSelectionView()
             }
             .environment(\.fontSize, $fontSize)
+            .environmentObject(dispatcher)
             .onAppear {
                 store.dispatch(ReplaceSnapshots(snapshots: snapshotsFixture()))
             }

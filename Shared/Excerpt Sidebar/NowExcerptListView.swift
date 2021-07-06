@@ -27,8 +27,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
             .navigationTitle("All /now Pages")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    AddSubscriptionButton(store: store,
-                                          labelStyle: .iconOnly)
+                    AddSubscriptionButton(labelStyle: .iconOnly)
                 }
             }
     }

@@ -1,19 +1,11 @@
 //  Copyright © 2021 Christian Tietze. All rights reserved. Distributed under the MIT License.
 
 import SwiftUI
-import ReSwift
 
-struct AddSubscriptionButton<Style: LabelStyle, Store: ReSwift.StoreType>: View {
-    private let store: Store
-
+struct AddSubscriptionButton<Style: LabelStyle>: View {
     let labelStyle: Style
 
     @State var showSheetView = false
-
-    init(store: Store, labelStyle: Style) {
-        self.store = store
-        self.labelStyle = labelStyle
-    }
 
     var body: some View {
         Button(action: {
@@ -22,8 +14,7 @@ struct AddSubscriptionButton<Style: LabelStyle, Store: ReSwift.StoreType>: View 
             Label("Add /now Page", systemImage: "plus")
                 .labelStyle(labelStyle)
         }).sheet(isPresented: $showSheetView) {
-            AddNowPageFormView(store: store,
-                               showSheetView: $showSheetView)
+            AddNowPageFormView(showSheetView: $showSheetView)
         }
     }
 }
