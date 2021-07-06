@@ -6,6 +6,8 @@ import Kanna
 
 /// Attempts to produce new `NowSnapshot` from `URL`
 let fetchNewPageMiddleware: Middleware<AppState> = { dispatch, getState in
+    let networkRequestQueue = DispatchQueue(label: "fetching-now-page", qos: .userInitiated)
+
     return { next in
         return { action in
             guard case AddNowPage.request(let requestURL) = action
@@ -15,17 +17,23 @@ let fetchNewPageMiddleware: Middleware<AppState> = { dispatch, getState in
             func handleServerError(_ response: URLResponse?) {}
             func handleContentError(_ response: URLResponse?, _ data: Data?) {}
 
-            let result = Result {
-                try Kanna.HTML(url: requestURL, encoding: .utf8)
-            }.map { NowSnapshot(fromHTMLDocument: $0, url: requestURL) }
+            next(AddNowPage.inProgress)
 
-            switch result {
-            case .failure(let error):
-                break
+            networkRequestQueue.async {
+                let result = Result {
+                    try Kanna.HTML(url: requestURL, encoding: .utf8)
+                }.map { NowSnapshot(fromHTMLDocument: $0, url: requestURL) }
 
-            case .success(let snapshot):
-                DispatchQueue.main.async {
-                    next(AddNowPage.result(.success(snapshot)))
+                switch result {
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        next(AddNowPage.result(.failure(error)))
+                    }
+
+                case .success(let snapshot):
+                    DispatchQueue.main.async {
+                        next(AddNowPage.result(.success(snapshot)))
+                    }
                 }
             }
         }

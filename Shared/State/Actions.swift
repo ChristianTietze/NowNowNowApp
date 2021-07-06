@@ -5,6 +5,7 @@ import ReSwift
 
 enum AddNowPage: ReSwift.Action {
     case request(url: URL)
+    case inProgress
     case result(Result<NowSnapshot, Error>)
 }
 
