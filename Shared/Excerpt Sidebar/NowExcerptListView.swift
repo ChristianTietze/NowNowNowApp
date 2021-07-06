@@ -50,7 +50,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
                 // Delete selected items on iOS right away
                 indexSet
                     .map { excerpts.value[$0].id }
-                    .forEach { store.dispatch(AppAction.deleteSnapshot($0)) }
+                    .forEach { store.dispatch(DeleteNowPage(id: $0)) }
             }
         }
         .frame(minWidth: 200, alignment: .topLeading)
@@ -62,7 +62,7 @@ struct NowExcerptListView<Store: ReSwift.StoreType>: View where Store.State: Has
     private var deletionAlert: Alert {
         let deletionButton = Alert.Button.destructive(Text("Delete"), action: {
             guard let selectedExcerpt = selectedExcerpt else { return }
-            store.dispatch(AppAction.deleteSnapshot(selectedExcerpt.id))
+            store.dispatch(DeleteNowPage(id: selectedExcerpt.id))
         })
         return Alert(title: Text("Delete /now Page?"),
               message: Text("Do you really want to delete this subscription?"),

@@ -16,7 +16,7 @@ struct NowNowNowApp: App {
             }
             .environment(\.fontSize, $fontSize)
             .onAppear {
-                store.dispatch(.replaceSnapshots(snapshotsFixture()))
+                store.dispatch(ReplaceSnapshots(snapshots: snapshotsFixture()))
             }
         }
         // Font +/- menu items for macOS; irrelevant on iOS due to dynamic type.

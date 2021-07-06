@@ -55,6 +55,10 @@
 		50D6F2DD2694537200A50976 /* ReSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50D6F2DC2694537200A50976 /* ReSwift */; };
 		50D6F2DF26945D3F00A50976 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2DE26945D3F00A50976 /* AppState.swift */; };
 		50D6F2E026945D3F00A50976 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2DE26945D3F00A50976 /* AppState.swift */; };
+		50D6F2E226945E4500A50976 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E126945E4500A50976 /* Subscriber.swift */; };
+		50D6F2E326945E4500A50976 /* Subscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E126945E4500A50976 /* Subscriber.swift */; };
+		50D6F2E526945E6000A50976 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E426945E6000A50976 /* Actions.swift */; };
+		50D6F2E626945E6000A50976 /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2E426945E6000A50976 /* Actions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +112,8 @@
 		50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningLoadingCircleView.swift; sourceTree = "<group>"; };
 		50D6F2D02694371300A50976 /* URLStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.swift; sourceTree = "<group>"; };
 		50D6F2DE26945D3F00A50976 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		50D6F2E126945E4500A50976 /* Subscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscriber.swift; sourceTree = "<group>"; };
+		50D6F2E426945E6000A50976 /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				50656433269074B100076639 /* AppStore.swift */,
+				50D6F2E426945E6000A50976 /* Actions.swift */,
+				50D6F2E126945E4500A50976 /* Subscriber.swift */,
 				50D6F2DE26945D3F00A50976 /* AppState.swift */,
 				50738653268DB19B004092A9 /* NowSnapshot.swift */,
 			);
@@ -437,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D6F2E226945E4500A50976 /* Subscriber.swift in Sources */,
 				50544D35269309F800F704D7 /* NowPageURLView.swift in Sources */,
 				5073864C268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
@@ -445,6 +454,7 @@
 				50544D1126921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
+				50D6F2E526945E6000A50976 /* Actions.swift in Sources */,
 				503B9911267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738646268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
@@ -466,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D6F2E326945E4500A50976 /* Subscriber.swift in Sources */,
 				50544D36269309F800F704D7 /* NowPageURLView.swift in Sources */,
 				5073864D268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				503B98FC267D30A4006F752F /* NowExcerptListView.swift in Sources */,
@@ -474,6 +485,7 @@
 				50544D1226921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				50D6F2CF269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
+				50D6F2E626945E6000A50976 /* Actions.swift in Sources */,
 				503B9912267F66D8006F752F /* CircleImage.swift in Sources */,
 				503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */,
 				50738647268C9028004092A9 /* AddSubscriptionButton.swift in Sources */,
