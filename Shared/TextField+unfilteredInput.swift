@@ -4,12 +4,12 @@ import SwiftUI
 
 extension TextField {
     /// Do not auto-correct user input in any way. Works on all platforms.
-    func unfilteredInput() -> some View {
-        modifier(UnfilteredInputModifier())
+    func verbatimInput() -> some View {
+        modifier(VerbatimInputModifier())
     }
 }
 
-struct UnfilteredInputModifier: ViewModifier {
+struct VerbatimInputModifier: ViewModifier {
     func body(content: Content) -> some View {
         #if !os(macOS)
         content

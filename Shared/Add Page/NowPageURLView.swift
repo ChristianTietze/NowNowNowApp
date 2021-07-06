@@ -17,8 +17,8 @@ struct NowPageURLView: View {
                 Text("URL:")
                 #endif
 
-                TextField("URL, e.g. sivers.org/now", text: $urlValidator.text)
-                    .unfilteredInput()
+                TextField("URL, e.g. https://sivers.org/now", text: $urlValidator.text)
+                    .verbatimInput()
                     .frame(minWidth: 250)
 
                 URLStatusView(urlValidator: urlValidator)
