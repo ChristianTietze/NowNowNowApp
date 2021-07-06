@@ -15,7 +15,15 @@ class NowPageURLValidator: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: &$isPerformingNetworkActivity)
 
-        $text
+        // Make sure to skip duplicates both in requests and immediate invalidations.
+        let uniqueURLStrings = $text.removeDuplicates()
+
+        // Immediately invalidate when user types. Otherwise one could enter a valid URL, validate the form to enable the "Add" button, then type another character and quickly hit Enter to effectively confirm an invalid URL.
+        uniqueURLStrings
+            .map { _ in nil }
+            .assign(to: &$validURL)
+
+        uniqueURLStrings
             .debounce(for: 0.2, scheduler: RunLoop.main)
             .removeDuplicates()
             .compactMap { URL.reachableURL(string: $0, networkActivityPublisher: networkActivityPublisher) }
