@@ -25,7 +25,6 @@ class NowPageURLValidator: ObservableObject {
 
         uniqueURLStrings
             .debounce(for: 0.2, scheduler: RunLoop.main)
-            .removeDuplicates()
             .compactMap { URL.reachableURL(string: $0, networkActivityPublisher: networkActivityPublisher) }
             .switchToLatest()
             .receive(on: RunLoop.main)
@@ -36,7 +35,6 @@ class NowPageURLValidator: ObservableObject {
 extension URL {
     /// - Returns: Promise of the URL result.
     static func reachableURL(string: String, networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never> {
-        print(string)
         guard let url = URL(string: string)
         else { return Just(nil).eraseToAnyPublisher() }
 

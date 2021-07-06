@@ -19,9 +19,28 @@ struct NowPageURLView: View {
 
                 TextField("URL, e.g. https://sivers.org/now", text: $urlValidator.text)
                     .verbatimInput()
+                    .modifier(EnforceHTTPSModifier(text: $urlValidator.text))
                     .frame(minWidth: 250)
 
                 URLStatusView(urlValidator: urlValidator)
+            }
+        }
+    }
+
+    struct EnforceHTTPSModifier: ViewModifier {
+        @Binding var text: String
+
+        func body(content: Content) -> some View {
+            content.onChange(of: text) { newValue in
+                var result = newValue
+                if !newValue.hasPrefix("https://") {
+                    // Drop http:// or ftp:// -- when users try to delete parts of the "https://" protocol string, this also cleans that up. We also match single-slash ":/" because that's what you get when you delete backwards right before the domain name.
+                    if let separatorRange = result.range(of: "://") ?? result.range(of: ":/") {
+                        result = String(result[separatorRange.upperBound...])
+                    }
+                    result = "https://" + result
+                }
+                text = result
             }
         }
     }
