@@ -34,6 +34,31 @@ let fetchNewPageMiddleware: Middleware<AppState> = { dispatch, getState in
 
 extension NowSnapshot {
     static let iso8601DateFormatter = ISO8601DateFormatter()
+    static let fallbackDateFormatters: [DateFormatter] = {
+        return [
+            "yyyy-MM-dd",
+            "yyyy-MM-dd'T'HH:mm:ssZZZZZ",
+            "yyyy-MM-dd HH:mm:ssZZZZZ",
+            "yyyy-MM-dd HH:mm:ss ZZZZZ",
+            "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ",
+            "yyyy-MM-dd HH:mm:ss.SSSZZZZZ",
+            "yyyy-MM-dd HH:mm:ss.SSS ZZZZZ",
+            "yyyy-MM-dd'T'HH:mm:ss'Z'",
+            "yyyy-MM-dd HH:mm:ss'Z'",
+            "yyyy-MM-dd HH:mm:ss 'Z'",
+            "yyyy-MM-dd'T'HH:mm:ss.SSS",
+            "yyyy-MM-dd HH:mm:ss.SSS"
+        ].map { format -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = format
+            return formatter
+        }
+    }()
+
+    static func date(from string: String) -> Date? {
+        return iso8601DateFormatter.date(from: string)
+            ?? fallbackDateFormatters.lazy.compactMap { $0.date(from: string) }.first
+    }
 
     init(fromHTMLDocument html: Kanna.HTMLDocument, url: URL) {
         let content: String
@@ -47,8 +72,7 @@ extension NowSnapshot {
 
             // The microformat also expects the update timestamp to be in a `datetime` attribute inside a HTML tag with the class `.dt-published`.
             let updatedAtString = hNowElement.xpath(".//*[contains(@class,'dt-published')]/@datetime", namespaces: nil).first?.text ?? "No"
-            updatedAt = NowSnapshot.iso8601DateFormatter.date(from: updatedAtString)
-                ?? Date()
+            updatedAt = NowSnapshot.date(from: updatedAtString) ?? Date()
         } else {
             // Fallback to often used content tags
             let contentElement: Kanna.XMLElement? =
