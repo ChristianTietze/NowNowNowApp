@@ -2,9 +2,15 @@
 
 import SwiftUI
 
-struct NewSubscriptionView: View {
-    @StateObject var urlValidator = NowPageURLValidator()
+struct AddNowPageFormView: View {
+    enum Action: Equatable {
+        case add(url: URL)
+    }
+    
+    typealias ViewModel = Store<Empty, Action>
+    @ObservedObject var viewModel: ViewModel
 
+    @StateObject var urlValidator = NowPageURLValidator()
     @Binding var showSheetView: Bool
 
     let sheetTitle = "New Subscription"
@@ -52,6 +58,8 @@ struct NewSubscriptionView: View {
 
     private var subscribeButton: some View {
         Button("Add") {
+            guard let url = urlValidator.validURL else { return }
+            viewModel.send(.add(url: url))
             dismiss()
         }
         .keyboardShortcut(.defaultAction)
@@ -66,7 +74,9 @@ struct NewSubscriptionView: View {
 struct NewSubscriptionView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            NewSubscriptionView(showSheetView: .constant(true))
+            AddNowPageFormView(
+                viewModel: .stub(with: Empty()),
+                showSheetView: .constant(true))
         }
     }
 }

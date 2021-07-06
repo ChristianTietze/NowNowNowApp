@@ -69,6 +69,15 @@ protocol Connector {
     func connect(action: ViewAction) -> Action
 }
 
+/// Empty state, like void, but `Equatable`.
+struct Empty: Equatable {
+    init() {}
+
+    static func == (lhs: Empty, rhs: Empty) -> Bool {
+        return true
+    }
+}
+
 extension Store {
     /// See <https://swiftwithmajid.com/2021/02/03/redux-like-state-container-in-swiftui-part4/>
     func connect<C: Connector>(

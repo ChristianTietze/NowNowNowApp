@@ -15,6 +15,18 @@ extension Connectors {
             }
         }
     }
+
+    struct AddPage: Connector {
+        func connect(state: AppState) -> Empty {
+            return Empty()
+        }
+
+        func connect(action: AddNowPageFormView.Action) -> AppAction {
+            switch action {
+            case .add(url: let url): return .addNowPage(url: url)
+            }
+        }
+    }
 }
 
 extension NowExcerptViewModel {

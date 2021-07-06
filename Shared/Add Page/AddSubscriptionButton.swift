@@ -5,6 +5,7 @@ import SwiftUI
 struct AddSubscriptionButton<Style: LabelStyle>: View {
     let labelStyle: Style
 
+    @EnvironmentObject var store: AppStore
     @State var showSheetView = false
 
     var body: some View {
@@ -14,7 +15,8 @@ struct AddSubscriptionButton<Style: LabelStyle>: View {
             Label("Add /now Page", systemImage: "plus")
                 .labelStyle(labelStyle)
         }).sheet(isPresented: $showSheetView) {
-            NewSubscriptionView(showSheetView: $showSheetView)
+            AddNowPageFormView(viewModel: store.connect(using: Connectors.AddPage()),
+                               showSheetView: $showSheetView)
         }
     }
 }
