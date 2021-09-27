@@ -52,6 +52,7 @@ struct NowSnapshotView: View {
                         Text(verbatim: snapshot.content)
                             .font(font)
                             .padding()
+                            .frame(maxWidth: CGFloat.infinity, alignment: .leading)
                     }
                     .__enableTextSelection_macOS12_iOS15()
                 }
