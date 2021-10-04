@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		500A6C4126948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */; };
 		500A6C4226948FB200BDF93A /* Binding+wrappedCGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */; };
+		5016111A270B017800AA3AF2 /* NowPageURLValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161109270AF9CA00AA3AF2 /* NowPageURLValidatorTests.swift */; };
 		5016111C270B01F700AA3AF2 /* EmptyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016111B270B01F700AA3AF2 /* EmptyTest.swift */; };
 		503B98F9267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
 		503B98FA267D30A4006F752F /* NowNowNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503B98D0267D30A2006F752F /* NowNowNowApp.swift */; };
@@ -79,6 +80,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		50161115270B016A00AA3AF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 503B98CB267D30A2006F752F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 503B98D6267D30A4006F752F;
+			remoteInfo = "NowNowNow (iOS)";
+		};
 		503B98E8267D30A4006F752F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 503B98CB267D30A2006F752F /* Project object */;
@@ -97,6 +105,9 @@
 
 /* Begin PBXFileReference section */
 		500A6C4026948FB200BDF93A /* Binding+wrappedCGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+wrappedCGFloat.swift"; sourceTree = "<group>"; };
+		50161109270AF9CA00AA3AF2 /* NowPageURLValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPageURLValidatorTests.swift; sourceTree = "<group>"; };
+		5016110B270AFC3B00AA3AF2 /* Combine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Combine.framework; path = System/Library/Frameworks/Combine.framework; sourceTree = SDKROOT; };
+		50161111270B016A00AA3AF2 /* NowNowNow iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NowNowNow iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5016111B270B01F700AA3AF2 /* EmptyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTest.swift; sourceTree = "<group>"; };
 		503B98D0267D30A2006F752F /* NowNowNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowNowNowApp.swift; sourceTree = "<group>"; };
 		503B98D1267D30A2006F752F /* NowExcerptListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptListView.swift; sourceTree = "<group>"; };
@@ -143,6 +154,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5016110E270B016A00AA3AF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503B98D4267D30A4006F752F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,12 +196,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50161112270B016A00AA3AF2 /* NowNowNow iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				50161109270AF9CA00AA3AF2 /* NowPageURLValidatorTests.swift */,
+			);
+			path = "NowNowNow iOS Tests";
+			sourceTree = "<group>";
+		};
 		503B98CA267D30A2006F752F = {
 			isa = PBXGroup;
 			children = (
 				503B98CF267D30A2006F752F /* Shared */,
 				503B98D9267D30A4006F752F /* iOS */,
 				503B98E0267D30A4006F752F /* macOS */,
+				50161112270B016A00AA3AF2 /* NowNowNow iOS Tests */,
 				503B98EA267D30A4006F752F /* Tests iOS */,
 				503B98F5267D30A4006F752F /* Tests macOS */,
 				503B98D8267D30A4006F752F /* Products */,
@@ -221,6 +248,7 @@
 				503B98DF267D30A4006F752F /* NowNowNow.app */,
 				503B98E7267D30A4006F752F /* Tests iOS.xctest */,
 				503B98F2267D30A4006F752F /* Tests macOS.xctest */,
+				50161111270B016A00AA3AF2 /* NowNowNow iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -310,6 +338,7 @@
 		50D6F2DB2694537200A50976 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5016110B270AFC3B00AA3AF2 /* Combine.framework */,
 				50ACB65226948A8900CDDDD6 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -327,6 +356,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		50161110270B016A00AA3AF2 /* NowNowNow iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50161117270B016A00AA3AF2 /* Build configuration list for PBXNativeTarget "NowNowNow iOS Tests" */;
+			buildPhases = (
+				5016110D270B016A00AA3AF2 /* Sources */,
+				5016110E270B016A00AA3AF2 /* Frameworks */,
+				5016110F270B016A00AA3AF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50161116270B016A00AA3AF2 /* PBXTargetDependency */,
+			);
+			name = "NowNowNow iOS Tests";
+			productName = "NowNowNow iOS Tests";
+			productReference = 50161111270B016A00AA3AF2 /* NowNowNow iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		503B98D6267D30A4006F752F /* NowNowNow (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503B9901267D30A4006F752F /* Build configuration list for PBXNativeTarget "NowNowNow (iOS)" */;
@@ -411,9 +458,13 @@
 		503B98CB267D30A2006F752F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					50161110270B016A00AA3AF2 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 503B98D6267D30A4006F752F;
+					};
 					503B98D6267D30A4006F752F = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -422,6 +473,7 @@
 					};
 					503B98E6267D30A4006F752F = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1300;
 						TestTargetID = 503B98D6267D30A4006F752F;
 					};
 					503B98F1267D30A4006F752F = {
@@ -449,6 +501,7 @@
 			targets = (
 				503B98D6267D30A4006F752F /* NowNowNow (iOS) */,
 				503B98DE267D30A4006F752F /* NowNowNow (macOS) */,
+				50161110270B016A00AA3AF2 /* NowNowNow iOS Tests */,
 				503B98E6267D30A4006F752F /* Tests iOS */,
 				503B98F1267D30A4006F752F /* Tests macOS */,
 			);
@@ -456,6 +509,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5016110F270B016A00AA3AF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503B98D5267D30A4006F752F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -489,6 +549,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5016110D270B016A00AA3AF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5016111A270B017800AA3AF2 /* NowPageURLValidatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		503B98D3267D30A4006F752F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -583,6 +651,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		50161116270B016A00AA3AF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 503B98D6267D30A4006F752F /* NowNowNow (iOS) */;
+			targetProxy = 50161115270B016A00AA3AF2 /* PBXContainerItemProxy */;
+		};
 		503B98E9267D30A4006F752F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 503B98D6267D30A4006F752F /* NowNowNow (iOS) */;
@@ -596,6 +669,59 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		50161118270B016A00AA3AF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.NowNowNow-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NowNowNow.app/NowNowNow";
+			};
+			name = Debug;
+		};
+		50161119270B016A00AA3AF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FRMDA3XRGC;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.NowNowNow-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NowNowNow.app/NowNowNow";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		503B98FF267D30A4006F752F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -806,6 +932,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
@@ -818,6 +945,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christiantietze.Tests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "NowNowNow (iOS)";
@@ -828,6 +956,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
 				INFOPLIST_FILE = "Tests iOS/Info.plist";
@@ -894,6 +1023,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		50161117270B016A00AA3AF2 /* Build configuration list for PBXNativeTarget "NowNowNow iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50161118270B016A00AA3AF2 /* Debug */,
+				50161119270B016A00AA3AF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		503B98CE267D30A2006F752F /* Build configuration list for PBXProject "NowNowNow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
