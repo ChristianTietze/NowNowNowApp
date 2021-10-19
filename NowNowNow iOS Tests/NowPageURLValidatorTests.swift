@@ -6,6 +6,27 @@ import Foundation
 @testable import NowNowNow
 
 class NowPageURLValidatorTests: XCTestCase {
+    class URLResolverDouble {
+        let receivedURLStringExpectation: XCTestExpectation
+        private(set) var receivedString: String?
+
+        init(receivedURLStringExpectation: XCTestExpectation) {
+            self.receivedURLStringExpectation = receivedURLStringExpectation
+        }
+
+        func urlResolver(returning urlResult: URL?) -> NowPageURLValidator.URLResolver {
+            return { string, activityPublisher in
+                self.receivedString = string
+                self.receivedURLStringExpectation.fulfill()
+
+                activityPublisher.send(true)
+                defer { activityPublisher.send(false) }
+
+                return Just(urlResult).eraseToAnyPublisher()
+            }
+        }
+    }
+
     var cancellables = Set<AnyCancellable>()
 
     override func setUpWithError() throws {
@@ -16,20 +37,12 @@ class NowPageURLValidatorTests: XCTestCase {
         cancellables = []
     }
 
+
     func testValidURL_WithInvalidURLString_PerformsRequestsAndFails() throws {
         // Given
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
-        var receivedString: String?
-        let urlResolverDouble: NowPageURLValidator.URLResolver = { string, activityPublisher in
-            receivedString = string
-            receivedURLStringExpectation.fulfill()
-
-            activityPublisher.send(true)
-            defer { activityPublisher.send(false) }
-
-            return Just(URL?.none).eraseToAnyPublisher()
-        }
-        let validator = NowPageURLValidator(reachableURL: urlResolverDouble)
+        let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
+        let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: nil))
         XCTAssertEqual(validator.isPerformingNetworkActivity, false)
 
         // Then
@@ -77,24 +90,15 @@ class NowPageURLValidatorTests: XCTestCase {
             validURLReceivedExpectation
         ], timeout: 1)
 
-        XCTAssertEqual(receivedString, "invalid url")
+        XCTAssertEqual(requestHandlerDouble.receivedString, "invalid url")
     }
 
     func testValidURL_WithValidURLString_PerformsRequestsAndProducesURL() throws {
         // Given
         let urlStub = URL(fileURLWithPath: "/a/valid/url/")
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
-        var receivedString: String?
-        let urlResolverDouble: NowPageURLValidator.URLResolver = { string, activityPublisher in
-            receivedString = string
-            receivedURLStringExpectation.fulfill()
-
-            activityPublisher.send(true)
-            defer { activityPublisher.send(false) }
-
-            return Just(urlStub).eraseToAnyPublisher()
-        }
-        let validator = NowPageURLValidator(reachableURL: urlResolverDouble)
+        let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
+        let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: urlStub))
         XCTAssertEqual(validator.isPerformingNetworkActivity, false)
 
         var isPerformingNetworkActivityCount = 0
@@ -141,7 +145,6 @@ class NowPageURLValidatorTests: XCTestCase {
             validURLReceivedExpectation
         ], timeout: 1)
 
-        XCTAssertEqual(receivedString, "some valid url")
+        XCTAssertEqual(requestHandlerDouble.receivedString, "some valid url")
     }
-
 }
