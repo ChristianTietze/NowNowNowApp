@@ -4,11 +4,13 @@ import Foundation
 import Combine
 
 class NowPageURLValidator: ObservableObject {
+    typealias URLResolver = (_ string: String, _ networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never>
+
     @Published var isPerformingNetworkActivity: Bool = false
     @Published var text: String = ""
     @Published var validURL: URL? = nil
 
-    init() {
+    init(reachableURL: @escaping URLResolver = URL.reachableURL(string:networkActivityPublisher:)) {
         let networkActivityPublisher = PassthroughSubject<Bool, Never>()
 
         networkActivityPublisher
@@ -25,7 +27,7 @@ class NowPageURLValidator: ObservableObject {
 
         uniqueURLStrings
             .debounce(for: 0.2, scheduler: RunLoop.main)
-            .compactMap { URL.reachableURL(string: $0, networkActivityPublisher: networkActivityPublisher) }
+            .compactMap { reachableURL($0, networkActivityPublisher) }
             .switchToLatest()
             .receive(on: RunLoop.main)
             .assign(to: &$validURL)
