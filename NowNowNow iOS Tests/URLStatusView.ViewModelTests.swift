@@ -5,7 +5,9 @@ import Combine
 import Foundation
 @testable import NowNowNow
 
-class NowPageURLValidatorTests: XCTestCase {
+class URLStatusViewViewModelTests: XCTestCase {
+    typealias ViewModel = URLStatusView.ViewModel
+    
     class URLResolverDouble {
         let receivedURLStringExpectation: XCTestExpectation
         private(set) var receivedString: String?
@@ -14,7 +16,7 @@ class NowPageURLValidatorTests: XCTestCase {
             self.receivedURLStringExpectation = receivedURLStringExpectation
         }
 
-        func urlResolver(returning urlResult: URL?) -> NowPageURLValidator.URLResolver {
+        func urlResolver(returning urlResult: URL?) -> ViewModel.URLResolver {
             return { string, activityPublisher in
                 self.receivedString = string
                 self.receivedURLStringExpectation.fulfill()
@@ -38,7 +40,7 @@ class NowPageURLValidatorTests: XCTestCase {
     }
 
     func testInitialValues() {
-        let validator = NowPageURLValidator(reachableURL: { _, _ in Just(URL?.none).eraseToAnyPublisher() })
+        let validator = ViewModel(reachableURL: { _, _ in Just(URL?.none).eraseToAnyPublisher() })
 
         XCTAssertEqual(validator.isPerformingNetworkActivity, false)
         XCTAssertEqual(validator.text, "")
@@ -48,7 +50,7 @@ class NowPageURLValidatorTests: XCTestCase {
     func testValidURL_WithInvalidURLString_PerformsRequestsAndFails() throws {
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
         let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
-        let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: nil))
+        let validator = ViewModel(reachableURL: requestHandlerDouble.urlResolver(returning: nil))
 
         let isPerformingNetworkActivityExpectation = expectation(description: "Changes network activity status twice")
         validator
@@ -87,7 +89,7 @@ class NowPageURLValidatorTests: XCTestCase {
         let urlStub = URL(fileURLWithPath: "/a/valid/url/")
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
         let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
-        let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: urlStub))
+        let validator = ViewModel(reachableURL: requestHandlerDouble.urlResolver(returning: urlStub))
 
         let isPerformingNetworkActivityExpectation = expectation(description: "Changes network activity status twice")
         validator

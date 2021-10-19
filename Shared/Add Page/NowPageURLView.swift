@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct NowPageURLView: View {
-    @ObservedObject var urlValidator: NowPageURLValidator
+    @ObservedObject private(set) var urlStatusViewViewModel: URLStatusView.ViewModel
 
     var body: some View {
         urlTextField
@@ -17,12 +17,12 @@ struct NowPageURLView: View {
                 Text("URL:")
                 #endif
 
-                TextField("URL, e.g. https://sivers.org/now", text: $urlValidator.text)
+                TextField("URL, e.g. https://sivers.org/now", text: $urlStatusViewViewModel.text)
                     .verbatimInput()
-                    .modifier(EnforceHTTPSModifier(text: $urlValidator.text))
+                    .modifier(EnforceHTTPSModifier(text: $urlStatusViewViewModel.text))
                     .frame(minWidth: 250)
 
-                URLStatusView(urlValidator: urlValidator)
+                URLStatusView(viewModel: urlStatusViewViewModel)
             }
         }
     }

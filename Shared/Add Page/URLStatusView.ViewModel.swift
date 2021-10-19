@@ -3,34 +3,36 @@
 import Foundation
 import Combine
 
-class NowPageURLValidator: ObservableObject {
-    typealias URLResolver = (_ string: String, _ networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never>
+extension URLStatusView  {
+    class ViewModel: ObservableObject {
+        typealias URLResolver = (_ string: String, _ networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never>
 
-    @Published var isPerformingNetworkActivity: Bool = false
-    @Published var text: String = ""
-    @Published var validURL: URL? = nil
+        @Published var isPerformingNetworkActivity: Bool = false
+        @Published var text: String = ""
+        @Published var validURL: URL? = nil
 
-    init(reachableURL: @escaping URLResolver = URL.reachableURL(string:networkActivityPublisher:)) {
-        let networkActivityPublisher = PassthroughSubject<Bool, Never>()
+        init(reachableURL: @escaping URLResolver = URL.reachableURL(string:networkActivityPublisher:)) {
+            let networkActivityPublisher = PassthroughSubject<Bool, Never>()
 
-        networkActivityPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: &$isPerformingNetworkActivity)
+            networkActivityPublisher
+                .receive(on: RunLoop.main)
+                .assign(to: &$isPerformingNetworkActivity)
 
-        // Make sure to skip duplicates both in requests and immediate invalidations.
-        let uniqueURLStrings = $text.removeDuplicates()
+            // Make sure to skip duplicates both in requests and immediate invalidations.
+            let uniqueURLStrings = $text.removeDuplicates()
 
-        // Immediately invalidate when user types. Otherwise one could enter a valid URL, validate the form to enable the "Add" button, then type another character and quickly hit Enter to effectively confirm an invalid URL.
-        uniqueURLStrings
-            .map { _ in nil }
-            .assign(to: &$validURL)
+            // Immediately invalidate when user types. Otherwise one could enter a valid URL, validate the form to enable the "Add" button, then type another character and quickly hit Enter to effectively confirm an invalid URL.
+            uniqueURLStrings
+                .map { _ in nil }
+                .assign(to: &$validURL)
 
-        uniqueURLStrings
-            .debounce(for: 0.2, scheduler: RunLoop.main)
-            .compactMap { reachableURL($0, networkActivityPublisher) }
-            .switchToLatest()
-            .receive(on: RunLoop.main)
-            .assign(to: &$validURL)
+            uniqueURLStrings
+                .debounce(for: 0.2, scheduler: RunLoop.main)
+                .compactMap { reachableURL($0, networkActivityPublisher) }
+                .switchToLatest()
+                .receive(on: RunLoop.main)
+                .assign(to: &$validURL)
+        }
     }
 }
 

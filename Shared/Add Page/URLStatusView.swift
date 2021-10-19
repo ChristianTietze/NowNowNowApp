@@ -3,14 +3,14 @@
 import SwiftUI
 
 struct URLStatusView: View {
-    @ObservedObject var urlValidator: NowPageURLValidator
+    @ObservedObject private(set) var viewModel: URLStatusView.ViewModel
 
     var body: some View {
-        if urlValidator.isPerformingNetworkActivity {
+        if viewModel.isPerformingNetworkActivity {
             SpinningLoadingCircleView()
                 .modifier(StatusIconModifier(color: .blue))
         } else {
-            let isValid = (urlValidator.validURL != nil)
+            let isValid = (viewModel.validURL != nil)
             if isValid {
                 Image(systemName: "checkmark.circle")
                     .modifier(StatusIconModifier(color: .green))
@@ -35,6 +35,6 @@ struct URLStatusView: View {
 
 struct URLStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        URLStatusView(urlValidator: NowPageURLValidator())
+        URLStatusView(viewModel: URLStatusView.ViewModel())
     }
 }
