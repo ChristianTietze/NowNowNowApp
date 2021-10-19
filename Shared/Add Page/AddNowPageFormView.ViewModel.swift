@@ -3,7 +3,7 @@
 import Foundation
 import Combine
 
-extension URLStatusView  {
+extension AddNowPageFormView  {
     class ViewModel: ObservableObject {
         typealias URLResolver = (_ string: String, _ networkActivityPublisher: PassthroughSubject<Bool, Never>) -> AnyPublisher<URL?, Never>
 

@@ -4,7 +4,7 @@ import SwiftUI
 
 struct AddNowPageFormView: View {
     @EnvironmentObject var dispatcher: Dispatcher
-    @StateObject var urlStatusViewViewModel = URLStatusView.ViewModel()
+    @StateObject var viewModel = AddNowPageFormView.ViewModel()
     @Binding var showSheetView: Bool
 
     let sheetTitle = "New Subscription"
@@ -13,7 +13,7 @@ struct AddNowPageFormView: View {
         formWrapper {
             Form {
                 Section(header: Text("Website")) {
-                    NowPageURLView(urlStatusViewViewModel: urlStatusViewViewModel)
+                    NowPageURLView(formViewViewModel: viewModel)
                 }
             }
             .toolbar {
@@ -52,12 +52,12 @@ struct AddNowPageFormView: View {
 
     private var subscribeButton: some View {
         Button("Add") {
-            guard let url = urlStatusViewViewModel.validURL else { return }
+            guard let url = viewModel.validURL else { return }
             dispatcher.dispatch(AddNowPage.request(url: url))
             dismiss()
         }
         .keyboardShortcut(.defaultAction)
-        .disabled(urlStatusViewViewModel.validURL == nil)
+        .disabled(viewModel.validURL == nil)
     }
 
     private func dismiss() {

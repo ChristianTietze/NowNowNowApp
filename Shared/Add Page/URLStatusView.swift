@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct URLStatusView: View {
-    @ObservedObject private(set) var viewModel: URLStatusView.ViewModel
+    @ObservedObject private(set) var viewModel: AddNowPageFormView.ViewModel
 
     var body: some View {
         if viewModel.isPerformingNetworkActivity {
@@ -35,6 +35,6 @@ struct URLStatusView: View {
 
 struct URLStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        URLStatusView(viewModel: URLStatusView.ViewModel())
+        URLStatusView(viewModel: AddNowPageFormView.ViewModel())
     }
 }

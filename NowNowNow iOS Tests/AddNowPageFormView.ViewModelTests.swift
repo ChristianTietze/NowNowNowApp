@@ -5,8 +5,8 @@ import Combine
 import Foundation
 @testable import NowNowNow
 
-class URLStatusViewViewModelTests: XCTestCase {
-    typealias ViewModel = URLStatusView.ViewModel
+class AddNowPageFormViewViewModelTests: XCTestCase {
+    typealias ViewModel = AddNowPageFormView.ViewModel
     
     class URLResolverDouble {
         let receivedURLStringExpectation: XCTestExpectation
