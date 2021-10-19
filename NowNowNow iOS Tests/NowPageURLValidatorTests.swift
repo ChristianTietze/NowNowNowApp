@@ -37,51 +37,41 @@ class NowPageURLValidatorTests: XCTestCase {
         cancellables = []
     }
 
+    func testInitialValues() {
+        let validator = NowPageURLValidator(reachableURL: { _, _ in Just(URL?.none).eraseToAnyPublisher() })
+
+        XCTAssertEqual(validator.isPerformingNetworkActivity, false)
+        XCTAssertEqual(validator.text, "")
+        XCTAssertEqual(validator.validURL, nil)
+    }
 
     func testValidURL_WithInvalidURLString_PerformsRequestsAndFails() throws {
-        // Given
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
         let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
         let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: nil))
-        XCTAssertEqual(validator.isPerformingNetworkActivity, false)
 
-        // Then
-        var isPerformingNetworkActivityCount = 0
         let isPerformingNetworkActivityExpectation = expectation(description: "Changes network activity status twice")
         validator
             .$isPerformingNetworkActivity
             .dropFirst()
-            .sink { value in
-                isPerformingNetworkActivityCount += 1
-                if isPerformingNetworkActivityCount == 1 {
-                    XCTAssertEqual(value, true)
-                } else if isPerformingNetworkActivityCount == 2 {
-                    XCTAssertEqual(value, false)
-                    isPerformingNetworkActivityExpectation.fulfill()
-                } else {
-                    XCTFail("Expected isPerformingNetworkActivityCount to be changed only 2x")
-                }
+            .collect(2)
+            .sink { values in
+                XCTAssertEqual(values, [true, false])
+                isPerformingNetworkActivityExpectation.fulfill()
             }
             .store(in: &cancellables)
 
-        var validURLReceivedCount = 0
         let validURLReceivedExpectation = expectation(description: "Receives validURL update")
         validator
             .$validURL
             .dropFirst()
-            .sink { value in
-                validURLReceivedCount += 1
-                if validURLReceivedCount == 1 {
-                    XCTAssertNil(value)
-                } else if validURLReceivedCount == 2 {
-                    XCTAssertNil(value)
-                    validURLReceivedExpectation.fulfill()
-                } else {
-                    XCTFail("Expected validURL to be changed only 2x")
-                }
-            }.store(in: &cancellables)
+            .collect(2)
+            .sink { values in
+                XCTAssertEqual(values, [nil, nil])
+                validURLReceivedExpectation.fulfill()
+            }
+            .store(in: &cancellables)
 
-        // When
         validator.text = "invalid url"
 
         wait(for: [
@@ -94,49 +84,33 @@ class NowPageURLValidatorTests: XCTestCase {
     }
 
     func testValidURL_WithValidURLString_PerformsRequestsAndProducesURL() throws {
-        // Given
         let urlStub = URL(fileURLWithPath: "/a/valid/url/")
         let receivedURLStringExpectation = expectation(description: "Receives URL input")
         let requestHandlerDouble = URLResolverDouble(receivedURLStringExpectation: receivedURLStringExpectation)
         let validator = NowPageURLValidator(reachableURL: requestHandlerDouble.urlResolver(returning: urlStub))
-        XCTAssertEqual(validator.isPerformingNetworkActivity, false)
 
-        var isPerformingNetworkActivityCount = 0
         let isPerformingNetworkActivityExpectation = expectation(description: "Changes network activity status twice")
         validator
             .$isPerformingNetworkActivity
             .dropFirst()
-            .sink { value in
-                isPerformingNetworkActivityCount += 1
-                if isPerformingNetworkActivityCount == 1 {
-                    XCTAssertEqual(value, true)
-                } else if isPerformingNetworkActivityCount == 2 {
-                    XCTAssertEqual(value, false)
-                    isPerformingNetworkActivityExpectation.fulfill()
-                } else {
-                    XCTFail("Expected isPerformingNetworkActivityCount to be changed only 2x")
-                }
+            .collect(2)
+            .sink { values in
+                XCTAssertEqual(values, [true, false])
+                isPerformingNetworkActivityExpectation.fulfill()
             }
             .store(in: &cancellables)
 
-        var validURLReceivedCount = 0
         let validURLReceivedExpectation = expectation(description: "Receives validURL update")
         validator
             .$validURL
             .dropFirst()
-            .sink { value in
-                validURLReceivedCount += 1
-                if validURLReceivedCount == 1 {
-                    XCTAssertNil(value)
-                } else if validURLReceivedCount == 2 {
-                    XCTAssertEqual(value, urlStub)
-                    validURLReceivedExpectation.fulfill()
-                } else {
-                    XCTFail("Expected validURL to be changed only 2x")
-                }
-            }.store(in: &cancellables)
+            .collect(2)
+            .sink { values in
+                XCTAssertEqual(values, [nil, urlStub])
+                validURLReceivedExpectation.fulfill()
+            }
+            .store(in: &cancellables)
 
-        // When
         validator.text = "some valid url"
 
         wait(for: [
