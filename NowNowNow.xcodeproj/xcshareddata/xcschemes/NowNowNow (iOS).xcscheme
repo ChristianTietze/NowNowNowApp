@@ -21,7 +21,7 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "NO"
+            buildForTesting = "YES"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
@@ -49,6 +49,16 @@
                BlueprintIdentifier = "50161110270B016A00AA3AF2"
                BuildableName = "NowNowNow iOS Tests.xctest"
                BlueprintName = "NowNowNow iOS Tests"
+               ReferencedContainer = "container:NowNowNow.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "503B98E6267D30A4006F752F"
+               BuildableName = "Tests iOS.xctest"
+               BlueprintName = "Tests iOS"
                ReferencedContainer = "container:NowNowNow.xcodeproj">
             </BuildableReference>
          </TestableReference>
