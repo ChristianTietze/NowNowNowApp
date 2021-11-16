@@ -2,6 +2,7 @@
 
 import XCTest
 import Combine
+import EntwineTest
 @testable import NowNowNow
 
 class URLStatusView_ViewModel: XCTestCase {
@@ -9,15 +10,6 @@ class URLStatusView_ViewModel: XCTestCase {
     typealias Status = ViewModel.Status
 
     var irrelevantURL: URL { URL(fileURLWithPath: "/tmp") }
-    var cancellables = Set<AnyCancellable>()
-
-    override func setUpWithError() throws {
-        cancellables = []
-    }
-
-    override func tearDownWithError() throws {
-        cancellables = []
-    }
 
     func testConvenienceInitFromURLAndPending() throws {
         // Note: we cannot get back to `.initial` by design.
@@ -28,20 +20,24 @@ class URLStatusView_ViewModel: XCTestCase {
     }
 
     func testStatus_WithoutURL_PerformingNetworkActivity_ProducesPendingStatus() throws {
+        let testScheduler = TestScheduler(initialClock: 0)
+        let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
+            (300, .input(nil))
+        ])
+        let isPerformingNetworkActivityPublisher: TestablePublisher<Bool, Never> = testScheduler.createRelativeTestablePublisher([
+            (400, .input(true))
+        ])
+
         let viewModel = ViewModel(
-            validURL: Publishers.Sequence<[URL?], Never>(sequence: [nil]).delay(for: 0.1, scheduler: RunLoop.main).eraseToAnyPublisher(),
-            isPerformingNetworkActivity: Publishers.Sequence<[Bool], Never>(sequence: [true]).delay(for: 0.1, scheduler: RunLoop.main).eraseToAnyPublisher())
+            validURL: validURLPublisher.eraseToAnyPublisher(),
+            isPerformingNetworkActivity: isPerformingNetworkActivityPublisher.eraseToAnyPublisher())
 
-        let statusReceivedExpectation = expectation(description: "Receives status update")
-        viewModel
-            .$status
-            .collect(2)
-            .sink { values in
-                XCTAssertEqual(values, [.initial, .pending])
-                statusReceivedExpectation.fulfill()
-            }
-            .store(in: &cancellables)
+        let result = testScheduler.start { viewModel.$status }
 
-        waitForExpectations(timeout: 1, handler: nil)
+        XCTAssertEqual(result.recordedOutput, [
+            (200, .subscription),
+            (200, .input(.initial)),
+            (400, .input(.pending))
+        ])
     }
 }
