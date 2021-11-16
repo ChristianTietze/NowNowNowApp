@@ -47,6 +47,10 @@
 		50738655268DB19B004092A9 /* NowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738653268DB19B004092A9 /* NowSnapshot.swift */; };
 		5084DE0C2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */; };
 		5084DE0D2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */; };
+		5084DE1E2743BFEE00A017D2 /* Entwine in Frameworks */ = {isa = PBXBuildFile; productRef = 5084DE1D2743BFEE00A017D2 /* Entwine */; };
+		5084DE202743BFEE00A017D2 /* EntwineTest in Frameworks */ = {isa = PBXBuildFile; productRef = 5084DE1F2743BFEE00A017D2 /* EntwineTest */; };
+		5084DE222743C1DE00A017D2 /* Entwine in Frameworks */ = {isa = PBXBuildFile; productRef = 5084DE212743C1DE00A017D2 /* Entwine */; };
+		5084DE242743C1E900A017D2 /* EntwineTest in Frameworks */ = {isa = PBXBuildFile; productRef = 5084DE232743C1E900A017D2 /* EntwineTest */; };
 		509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
@@ -177,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5084DE242743C1E900A017D2 /* EntwineTest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5084DE222743C1DE00A017D2 /* Entwine in Frameworks */,
 				50D6F2EC2694667B00A50976 /* Kanna in Frameworks */,
 				50D6F2DA2694535F00A50976 /* ReSwift in Frameworks */,
 			);
@@ -194,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D6F2EE2694668100A50976 /* Kanna in Frameworks */,
+				5084DE1E2743BFEE00A017D2 /* Entwine in Frameworks */,
 				50D6F2DD2694537200A50976 /* ReSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +223,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5084DE202743BFEE00A017D2 /* EntwineTest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +425,9 @@
 				50161116270B016A00AA3AF2 /* PBXTargetDependency */,
 			);
 			name = "NowNowNow iOS Tests";
+			packageProductDependencies = (
+				5084DE232743C1E900A017D2 /* EntwineTest */,
+			);
 			productName = "NowNowNow iOS Tests";
 			productReference = 50161111270B016A00AA3AF2 /* NowNowNow iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -437,6 +448,7 @@
 			packageProductDependencies = (
 				50D6F2D92694535F00A50976 /* ReSwift */,
 				50D6F2EB2694667B00A50976 /* Kanna */,
+				5084DE212743C1DE00A017D2 /* Entwine */,
 			);
 			productName = "NowNowNow (iOS)";
 			productReference = 503B98D7267D30A4006F752F /* NowNowNow.app */;
@@ -458,6 +470,7 @@
 			packageProductDependencies = (
 				50D6F2DC2694537200A50976 /* ReSwift */,
 				50D6F2ED2694668100A50976 /* Kanna */,
+				5084DE1D2743BFEE00A017D2 /* Entwine */,
 			);
 			productName = "NowNowNow (macOS)";
 			productReference = 503B98DF267D30A4006F752F /* NowNowNow.app */;
@@ -513,6 +526,9 @@
 				50D8BADF2743AD580096C9C7 /* PBXTargetDependency */,
 			);
 			name = "NowNowNow macOS Tests";
+			packageProductDependencies = (
+				5084DE1F2743BFEE00A017D2 /* EntwineTest */,
+			);
 			productName = "NowNowNow macOS Tests";
 			productReference = 50D8BADA2743AD580096C9C7 /* NowNowNow macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -563,6 +579,7 @@
 			packageReferences = (
 				50D6F2D82694535F00A50976 /* XCRemoteSwiftPackageReference "ReSwift" */,
 				50D6F2EA2694667B00A50976 /* XCRemoteSwiftPackageReference "Kanna" */,
+				5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */,
 			);
 			productRefGroup = 503B98D8267D30A4006F752F /* Products */;
 			projectDirPath = "";
@@ -1239,6 +1256,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tcldr/Entwine.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.1;
+			};
+		};
 		50D6F2D82694535F00A50976 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReSwift/ReSwift";
@@ -1258,6 +1283,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5084DE1D2743BFEE00A017D2 /* Entwine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = Entwine;
+		};
+		5084DE1F2743BFEE00A017D2 /* EntwineTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = EntwineTest;
+		};
+		5084DE212743C1DE00A017D2 /* Entwine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = Entwine;
+		};
+		5084DE232743C1E900A017D2 /* EntwineTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5084DE1C2743BFEE00A017D2 /* XCRemoteSwiftPackageReference "Entwine" */;
+			productName = EntwineTest;
+		};
 		50D6F2D92694535F00A50976 /* ReSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50D6F2D82694535F00A50976 /* XCRemoteSwiftPackageReference "ReSwift" */;
