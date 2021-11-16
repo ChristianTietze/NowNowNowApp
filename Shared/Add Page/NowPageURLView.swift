@@ -22,7 +22,10 @@ struct NowPageURLView: View {
                     .modifier(EnforceHTTPSModifier(text: $formViewViewModel.text))
                     .frame(minWidth: 250)
 
-                URLStatusView(viewModel: formViewViewModel)
+                URLStatusView(
+                    viewModel: .init(
+                        validURL: formViewViewModel.$validURL.eraseToAnyPublisher(),
+                        isPerformingNetworkActivity: formViewViewModel.$isPerformingNetworkActivity.eraseToAnyPublisher()))
             }
         }
     }

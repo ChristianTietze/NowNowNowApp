@@ -1,23 +1,24 @@
 //  Copyright © 2021 Christian Tietze. All rights reserved. Distributed under the MIT License.
 
 import SwiftUI
+import Combine
 
 struct URLStatusView: View {
-    @ObservedObject private(set) var viewModel: AddNowPageFormView.ViewModel
+    @ObservedObject var viewModel: ViewModel
 
     var body: some View {
-        if viewModel.isPerformingNetworkActivity {
+        switch viewModel.status {
+        case .initial:
+            EmptyView()
+        case .pending:
             SpinningLoadingCircleView()
                 .modifier(StatusIconModifier(color: .blue))
-        } else {
-            let isValid = (viewModel.validURL != nil)
-            if isValid {
-                Image(systemName: "checkmark.circle")
-                    .modifier(StatusIconModifier(color: .green))
-            } else {
-                Image(systemName: "xmark.octagon")
-                    .modifier(StatusIconModifier(color: .red))
-            }
+        case .invalid:
+            Image(systemName: "xmark.octagon")
+                .modifier(StatusIconModifier(color: .red))
+        case .valid:
+            Image(systemName: "checkmark.circle")
+                .modifier(StatusIconModifier(color: .green))
         }
     }
 
@@ -35,6 +36,9 @@ struct URLStatusView: View {
 
 struct URLStatusView_Previews: PreviewProvider {
     static var previews: some View {
-        URLStatusView(viewModel: AddNowPageFormView.ViewModel())
+        URLStatusView(
+            viewModel: URLStatusView.ViewModel(
+                validURL: Just(nil).eraseToAnyPublisher(),
+                isPerformingNetworkActivity: Just(true).eraseToAnyPublisher()))
     }
 }

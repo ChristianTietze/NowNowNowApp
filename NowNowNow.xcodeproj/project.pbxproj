@@ -45,12 +45,16 @@
 		5073864D268DA42E004092A9 /* NowSnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5073864B268DA42E004092A9 /* NowSnapshotView.swift */; };
 		50738654268DB19B004092A9 /* NowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738653268DB19B004092A9 /* NowSnapshot.swift */; };
 		50738655268DB19B004092A9 /* NowSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50738653268DB19B004092A9 /* NowSnapshot.swift */; };
+		5084DE0C2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */; };
+		5084DE0D2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */; };
 		509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
 		509DF6AB268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
 		509DF6B0268C814100090624 /* AddNowPageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* AddNowPageFormView.swift */; };
 		509DF6B1268C814100090624 /* AddNowPageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* AddNowPageFormView.swift */; };
+		50A05E36271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */; };
+		50A05E37271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */; };
 		50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */; };
 		50D6F2CF269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */; };
 		50D6F2D12694371300A50976 /* URLStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2D02694371300A50976 /* URLStatusView.swift */; };
@@ -146,9 +150,11 @@
 		50738648268DA397004092A9 /* NowSnapshotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSnapshotViewModel.swift; sourceTree = "<group>"; };
 		5073864B268DA42E004092A9 /* NowSnapshotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSnapshotView.swift; sourceTree = "<group>"; };
 		50738653268DB19B004092A9 /* NowSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSnapshot.swift; sourceTree = "<group>"; };
+		5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.ViewModelTests.swift; sourceTree = "<group>"; };
 		509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+nowPlaceholderIcon.swift"; sourceTree = "<group>"; };
 		509DF6A9268C53D700090624 /* NowExcerptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowExcerptView.swift; sourceTree = "<group>"; };
 		509DF6AF268C814100090624 /* AddNowPageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNowPageFormView.swift; sourceTree = "<group>"; };
+		50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.ViewModel.swift; sourceTree = "<group>"; };
 		50ACB65226948A8900CDDDD6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningLoadingCircleView.swift; sourceTree = "<group>"; };
 		50D6F2D02694371300A50976 /* URLStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLStatusView.swift; sourceTree = "<group>"; };
@@ -321,6 +327,7 @@
 				50544D34269309F800F704D7 /* NowPageURLView.swift */,
 				50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */,
 				50D6F2D02694371300A50976 /* URLStatusView.swift */,
+				50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */,
 			);
 			path = "Add Page";
 			sourceTree = "<group>";
@@ -388,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				50161109270AF9CA00AA3AF2 /* AddNowPageFormView.ViewModelTests.swift */,
+				5084DE0B2743B66600A017D2 /* URLStatusView.ViewModelTests.swift */,
 			);
 			path = "Shared Unit Tests";
 			sourceTree = "<group>";
@@ -622,6 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5084DE0C2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */,
 				5016111A270B017800AA3AF2 /* AddNowPageFormView.ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,6 +643,7 @@
 				50544D35269309F800F704D7 /* NowPageURLView.swift in Sources */,
 				5073864C268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				50D6F2E826945F2300A50976 /* fetchNewPageMiddleware.swift in Sources */,
+				50A05E36271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */,
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
 				50544D2F269308E900F704D7 /* TextField+unfilteredInput.swift in Sources */,
 				509DF6B0268C814100090624 /* AddNowPageFormView.swift in Sources */,
@@ -672,6 +682,7 @@
 				50544D36269309F800F704D7 /* NowPageURLView.swift in Sources */,
 				5073864D268DA42E004092A9 /* NowSnapshotView.swift in Sources */,
 				50D6F2E926945F2300A50976 /* fetchNewPageMiddleware.swift in Sources */,
+				50A05E37271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */,
 				503B98FC267D30A4006F752F /* NowExcerptListView.swift in Sources */,
 				50544D30269308E900F704D7 /* TextField+unfilteredInput.swift in Sources */,
 				509DF6B1268C814100090624 /* AddNowPageFormView.swift in Sources */,
@@ -723,6 +734,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50D8BAE42743AF010096C9C7 /* AddNowPageFormView.ViewModelTests.swift in Sources */,
+				5084DE0D2743B66600A017D2 /* URLStatusView.ViewModelTests.swift in Sources */,
 				50D8BADD2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
