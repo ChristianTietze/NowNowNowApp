@@ -20,6 +20,34 @@
                ReferencedContainer = "container:NowNowNow.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "503B98F1267D30A4006F752F"
+               BuildableName = "Tests macOS.xctest"
+               BlueprintName = "Tests macOS"
+               ReferencedContainer = "container:NowNowNow.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "50D8BAD92743AD580096C9C7"
+               BuildableName = "NowNowNow macOS Tests.xctest"
+               BlueprintName = "NowNowNow macOS Tests"
+               ReferencedContainer = "container:NowNowNow.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,6 +56,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "50D8BAD92743AD580096C9C7"
+               BuildableName = "NowNowNow macOS Tests.xctest"
+               BlueprintName = "NowNowNow macOS Tests"
+               ReferencedContainer = "container:NowNowNow.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
