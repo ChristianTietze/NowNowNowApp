@@ -77,6 +77,7 @@
 		50D6F2FA269482B400A50976 /* Array+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2F8269482B400A50976 /* Array+extensions.swift */; };
 		50D6F2FC2694855700A50976 /* UpdatedAtFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */; };
 		50D6F2FD2694855700A50976 /* UpdatedAtFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */; };
+		50D8BAD52743ACC30096C9C7 /* EmptyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		50D6F2F526947FCD00A50976 /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
 		50D6F2F8269482B400A50976 /* Array+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extensions.swift"; sourceTree = "<group>"; };
 		50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAtFormatter.swift; sourceTree = "<group>"; };
+		50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		503B98F5267D30A4006F752F /* Tests macOS */ = {
 			isa = PBXGroup;
 			children = (
+				50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */,
 				503B98F8267D30A4006F752F /* Info.plist */,
 			);
 			path = "Tests macOS";
@@ -645,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D8BAD52743ACC30096C9C7 /* EmptyTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
