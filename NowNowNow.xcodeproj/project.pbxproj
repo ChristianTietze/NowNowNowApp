@@ -79,6 +79,7 @@
 		50D6F2FD2694855700A50976 /* UpdatedAtFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D6F2FB2694855700A50976 /* UpdatedAtFormatter.swift */; };
 		50D8BAD52743ACC30096C9C7 /* EmptyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */; };
 		50D8BADD2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8BADC2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift */; };
+		50D8BAE42743AF010096C9C7 /* AddNowPageFormView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161109270AF9CA00AA3AF2 /* AddNowPageFormView.ViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,7 +219,6 @@
 		50161112270B016A00AA3AF2 /* NowNowNow iOS Tests */ = {
 			isa = PBXGroup;
 			children = (
-				50161109270AF9CA00AA3AF2 /* AddNowPageFormView.ViewModelTests.swift */,
 			);
 			path = "NowNowNow iOS Tests";
 			sourceTree = "<group>";
@@ -229,8 +229,10 @@
 				503B98CF267D30A2006F752F /* Shared */,
 				503B98D9267D30A4006F752F /* iOS */,
 				503B98E0267D30A4006F752F /* macOS */,
+				50D8BAE32743AEF30096C9C7 /* Shared Unit Tests */,
 				50161112270B016A00AA3AF2 /* NowNowNow iOS Tests */,
 				503B98EA267D30A4006F752F /* Tests iOS */,
+				50D8BADB2743AD580096C9C7 /* NowNowNow macOS Tests */,
 				503B98F5267D30A4006F752F /* Tests macOS */,
 				503B98D8267D30A4006F752F /* Products */,
 				50D6F2DB2694537200A50976 /* Frameworks */,
@@ -380,6 +382,14 @@
 				50D8BADC2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift */,
 			);
 			path = "NowNowNow macOS Tests";
+			sourceTree = "<group>";
+		};
+		50D8BAE32743AEF30096C9C7 /* Shared Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				50161109270AF9CA00AA3AF2 /* AddNowPageFormView.ViewModelTests.swift */,
+			);
+			path = "Shared Unit Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -712,6 +722,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50D8BAE42743AF010096C9C7 /* AddNowPageFormView.ViewModelTests.swift in Sources */,
 				50D8BADD2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
