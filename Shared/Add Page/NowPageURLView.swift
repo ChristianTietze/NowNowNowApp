@@ -12,12 +12,11 @@ struct NowPageURLView: View {
     private var urlTextField: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .center) {
-                #if os(macOS)
-                // On iOS, placeholder text is the norm, but on macOS, we'd better add a label.
-                Text("URL:")
-                #endif
-
-                TextField("URL, e.g. https://sivers.org/now", text: $formViewViewModel.text)
+                TextField(
+                    text: $formViewViewModel.text,
+                    prompt: Text("URL, e.g. https://sivers.org/now")) {
+                        Text("URL:")
+                    }
                     .verbatimInput()
                     .modifier(EnforceHTTPSModifier(text: $formViewViewModel.text))
                     .frame(minWidth: 250)
