@@ -48,3 +48,9 @@ struct NowPageURLView: View {
         }
     }
 }
+
+struct NowPageURLView_Previews: PreviewProvider {
+    static var previews: some View {
+        NowPageURLView(formViewViewModel: .init())
+    }
+}
