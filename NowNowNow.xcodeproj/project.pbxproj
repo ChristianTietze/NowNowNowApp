@@ -955,7 +955,7 @@
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -977,7 +977,7 @@
 				DEVELOPMENT_TEAM = FRMDA3XRGC;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1008,7 +1008,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 12;
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.NowNowNow;
 				PRODUCT_NAME = NowNowNow;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1034,7 +1034,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 12;
 				PRODUCT_BUNDLE_IDENTIFIER = de.christiantietze.NowNowNow;
 				PRODUCT_NAME = NowNowNow;
 				PROVISIONING_PROFILE_SPECIFIER = "";
