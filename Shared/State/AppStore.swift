@@ -17,23 +17,26 @@ extension AppStore {
 }
 
 func appReducer(action: ReSwift.Action, state: AppState?) -> AppState {
+    // Initial state creation
+    let state = state ?? AppState()
+    // Action-based updates
     return AppState(
-        nowSnapshots: nowSnapshotsReducer(action: action, state: state?.nowSnapshots))
+        nowSnapshots: nowSnapshotsReducer(action: action, state: state.nowSnapshots)
+    )
 }
 
-func nowSnapshotsReducer(action: ReSwift.Action, state: [NowSnapshot]?) -> [NowSnapshot] {
+func nowSnapshotsReducer(action: ReSwift.Action, state: [NowSnapshot]) -> [NowSnapshot] {
     switch action {
     case let action as ReplaceSnapshots:
         return action.snapshots
 
     case let action as DeleteNowPage:
-        guard let state = state else { return [] }
         return state.removingAll(where: { $0.id == action.id })
 
     case .result(.success(let snapshot)) as AddNowPage:
-        return (state ?? []).appending(snapshot)
+        return state.appending(snapshot)
 
     default:
-        return state ?? []
+        return state
     }
 }
