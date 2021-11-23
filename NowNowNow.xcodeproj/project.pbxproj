@@ -55,7 +55,6 @@
 		509DF6A8268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A6268C4E2500090624 /* Image+nowPlaceholderIcon.swift */; };
 		509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
 		509DF6AB268C53D700090624 /* NowExcerptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6A9268C53D700090624 /* NowExcerptView.swift */; };
-		509DF6B0268C814100090624 /* AddNowPageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* AddNowPageFormView.swift */; };
 		509DF6B1268C814100090624 /* AddNowPageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509DF6AF268C814100090624 /* AddNowPageFormView.swift */; };
 		50A05E36271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */; };
 		50A05E37271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A05E35271EC5F800A13254 /* URLStatusView.ViewModel.swift */; };
@@ -88,6 +87,7 @@
 		50D8BAD52743ACC30096C9C7 /* EmptyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */; };
 		50D8BADD2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D8BADC2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift */; };
 		50D8BAE42743AF010096C9C7 /* AddNowPageFormView.ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50161109270AF9CA00AA3AF2 /* AddNowPageFormView.ViewModelTests.swift */; };
+		50F241B1274D22AC00520A69 /* AddNowPageFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F241B0274D22AC00520A69 /* AddNowPageFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +174,7 @@
 		50D8BAD42743ACBE0096C9C7 /* EmptyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTest.swift; sourceTree = "<group>"; };
 		50D8BADA2743AD580096C9C7 /* NowNowNow macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NowNowNow macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D8BADC2743AD580096C9C7 /* NowNowNow_macOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowNowNow_macOS_Tests.swift; sourceTree = "<group>"; };
+		50F241B0274D22AC00520A69 /* AddNowPageFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNowPageFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +295,7 @@
 			children = (
 				503B98DA267D30A4006F752F /* Info.plist */,
 				50544D0D2691D20C00F704D7 /* NowNowNowApp+fontSizeCommandGroup.swift */,
+				50F241B0274D22AC00520A69 /* AddNowPageFormView.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -304,6 +306,7 @@
 				503B98E1267D30A4006F752F /* Info.plist */,
 				503B98E2267D30A4006F752F /* macOS.entitlements */,
 				50544D0A2691D0B300F704D7 /* NowNowNowApp+fontSizeGroup.swift */,
+				509DF6AF268C814100090624 /* AddNowPageFormView.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -330,7 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				50738645268C9028004092A9 /* AddSubscriptionButton.swift */,
-				509DF6AF268C814100090624 /* AddNowPageFormView.swift */,
 				50544D31269309AA00F704D7 /* AddNowPageFormView.ViewModel.swift */,
 				50544D34269309F800F704D7 /* NowPageURLView.swift */,
 				50D6F2CD269434F300A50976 /* SpinningLoadingCircleView.swift */,
@@ -663,7 +665,6 @@
 				50A05E36271EC5F800A13254 /* URLStatusView.ViewModel.swift in Sources */,
 				503B98FB267D30A4006F752F /* NowExcerptListView.swift in Sources */,
 				50544D2F269308E900F704D7 /* TextField+unfilteredInput.swift in Sources */,
-				509DF6B0268C814100090624 /* AddNowPageFormView.swift in Sources */,
 				50544D1126921E8600F704D7 /* NoSelectionView.swift in Sources */,
 				509DF6A7268C4E2500090624 /* Image+nowPlaceholderIcon.swift in Sources */,
 				50D6F2CE269434F300A50976 /* SpinningLoadingCircleView.swift in Sources */,
@@ -685,6 +686,7 @@
 				50738649268DA397004092A9 /* NowSnapshotViewModel.swift in Sources */,
 				50D6F2DF26945D3F00A50976 /* AppState.swift in Sources */,
 				50738654268DB19B004092A9 /* NowSnapshot.swift in Sources */,
+				50F241B1274D22AC00520A69 /* AddNowPageFormView.swift in Sources */,
 				5065642E2690703B00076639 /* KeyPath+Comparable.swift in Sources */,
 				50544D0E2691D20C00F704D7 /* NowNowNowApp+fontSizeCommandGroup.swift in Sources */,
 				509DF6AA268C53D700090624 /* NowExcerptView.swift in Sources */,

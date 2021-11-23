@@ -10,11 +10,13 @@ struct AddNowPageFormView: View {
     let sheetTitle = "New Subscription"
 
     var body: some View {
-        formWrapper {
+        VStack {
+            // Since macOS 11, dialogs don't have titles, so we cannot see navigationTitle at all and should instead repeat it. But if we use `Form` here as well, the .toolbar won't be applied at the proper place
+            Text(sheetTitle)
+                .font(.headline)
+
             Form {
-                Section(header: Text("Website")) {
-                    NowPageURLView(formViewViewModel: viewModel)
-                }
+                NowPageURLView(formViewViewModel: viewModel)
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -24,23 +26,7 @@ struct AddNowPageFormView: View {
                     subscribeButton
                 }
             }
-        }
-    }
-
-    private func formWrapper<V: View>(@ViewBuilder _ contents: () -> V) -> some View {
-        #if !os(macOS)
-        NavigationView {
-            contents()
-                .navigationBarTitle(sheetTitle, displayMode: .inline)
-        }
-        #else
-        VStack {
-            // Since macOS 11, dialogs don't have titles, so we cannot see navigationTitle at all and should instead repeat it. But if we use `Form` here as well, the .toolbar won't be applied at the proper place
-            Text(sheetTitle)
-                .font(.headline)
-            contents()
         }.padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
-        #endif
     }
 
     private var cancelButton: some View {
