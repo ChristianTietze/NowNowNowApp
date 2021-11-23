@@ -5,7 +5,7 @@ import Combine
 
 extension URLStatusView {
     class ViewModel: ObservableObject {
-        enum Status {
+        enum Status: Equatable {
             case initial, pending, valid, invalid
         }
 
@@ -14,9 +14,11 @@ extension URLStatusView {
         init(validURL: AnyPublisher<URL?, Never>,
              isPerformingNetworkActivity: AnyPublisher<Bool, Never>) {
 
-            validURL
-                .combineLatest(isPerformingNetworkActivity, Status.init(url:isPending:))
-                .assign(to: &$status)
+             validURL
+                 .combineLatest(isPerformingNetworkActivity.prepend(false),
+                                Status.init(url:isPending:))
+                 .removeDuplicates()
+                 .assign(to: &$status)
         }
     }
 }

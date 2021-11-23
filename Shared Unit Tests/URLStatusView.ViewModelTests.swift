@@ -19,6 +19,73 @@ class URLStatusView_ViewModel: XCTestCase {
         XCTAssertEqual(Status(url: irrelevantURL, isPending: true), .pending)
     }
 
+    func testStatus_JustURL_ProducesValidStatus() throws {
+        let testScheduler = TestScheduler(initialClock: 0)
+        let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
+            (444, .input(irrelevantURL))
+        ])
+        let isPerformingNetworkActivityPublisher: TestablePublisher<Bool, Never> = testScheduler.createRelativeTestablePublisher([
+            // no events
+        ])
+
+        let viewModel = ViewModel(
+            validURL: validURLPublisher.eraseToAnyPublisher(),
+            isPerformingNetworkActivity: isPerformingNetworkActivityPublisher.eraseToAnyPublisher())
+
+        let result = testScheduler.start { viewModel.$status }
+
+        XCTAssertEqual(result.recordedOutput, [
+            (200, .subscription),
+            (200, .input(.initial)),
+            (444, .input(.valid))
+        ])
+    }
+
+    func testStatus_WithURL_PerformingNetworkActivity_ProducesPendingStatus() throws {
+        let testScheduler = TestScheduler(initialClock: 0)
+        let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
+            (333, .input(irrelevantURL))
+        ])
+        let isPerformingNetworkActivityPublisher: TestablePublisher<Bool, Never> = testScheduler.createRelativeTestablePublisher([
+            (400, .input(true))
+        ])
+
+        let viewModel = ViewModel(
+            validURL: validURLPublisher.eraseToAnyPublisher(),
+            isPerformingNetworkActivity: isPerformingNetworkActivityPublisher.eraseToAnyPublisher())
+
+        let result = testScheduler.start { viewModel.$status }
+
+        XCTAssertEqual(result.recordedOutput, [
+            (200, .subscription),
+            (200, .input(.initial)),
+            (333, .input(.valid)),
+            (400, .input(.pending))
+        ])
+    }
+
+    func testStatus_WithURL_NoNetworkActivity_KeepsValidStatus() throws {
+        let testScheduler = TestScheduler(initialClock: 0)
+        let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
+            (300, .input(irrelevantURL))
+        ])
+        let isPerformingNetworkActivityPublisher: TestablePublisher<Bool, Never> = testScheduler.createRelativeTestablePublisher([
+            (500, .input(false))
+        ])
+
+        let viewModel = ViewModel(
+            validURL: validURLPublisher.eraseToAnyPublisher(),
+            isPerformingNetworkActivity: isPerformingNetworkActivityPublisher.eraseToAnyPublisher())
+
+        let result = testScheduler.start { viewModel.$status }
+
+        XCTAssertEqual(result.recordedOutput, [
+            (200, .subscription),
+            (200, .input(.initial)),
+            (300, .input(.valid))
+        ])
+    }
+
     func testStatus_WithoutURL_PerformingNetworkActivity_ProducesPendingStatus() throws {
         let testScheduler = TestScheduler(initialClock: 0)
         let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
@@ -37,7 +104,30 @@ class URLStatusView_ViewModel: XCTestCase {
         XCTAssertEqual(result.recordedOutput, [
             (200, .subscription),
             (200, .input(.initial)),
+            (300, .input(.invalid)),
             (400, .input(.pending))
+        ])
+    }
+
+    func testStatus_WithoutURL_NoNetworkActivity_ProducesInvalidStatus() throws {
+        let testScheduler = TestScheduler(initialClock: 0)
+        let validURLPublisher: TestablePublisher<URL?, Never> = testScheduler.createRelativeTestablePublisher([
+            (300, .input(nil))
+        ])
+        let isPerformingNetworkActivityPublisher: TestablePublisher<Bool, Never> = testScheduler.createRelativeTestablePublisher([
+            (500, .input(false))
+        ])
+
+        let viewModel = ViewModel(
+            validURL: validURLPublisher.eraseToAnyPublisher(),
+            isPerformingNetworkActivity: isPerformingNetworkActivityPublisher.eraseToAnyPublisher())
+
+        let result = testScheduler.start { viewModel.$status }
+
+        XCTAssertEqual(result.recordedOutput, [
+            (200, .subscription),
+            (200, .input(.initial)),
+            (300, .input(.invalid))
         ])
     }
 }
